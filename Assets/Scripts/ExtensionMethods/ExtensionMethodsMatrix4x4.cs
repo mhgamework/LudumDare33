@@ -14,7 +14,7 @@ public static class ExtensionMethodsMatrix4x4
             forward_vector;
 
         up_vector = matrix.GetColumn(1);
-        forward_vector = matrix.GetColumn(1);
+        forward_vector = matrix.GetColumn(2); // THIS WAS 1, changed to 2 but untested
 
         if (up_vector != Vector3.zero && forward_vector != Vector3.zero && up_vector != forward_vector)
         {
@@ -34,7 +34,7 @@ public static class ExtensionMethodsMatrix4x4
             forward_vector;
 
         up_vector = matrix.GetColumn(1);
-        forward_vector = matrix.GetColumn(1);
+        forward_vector = matrix.GetColumn(2); // THIS WAS 1, changed to 2 but untested
 
         if (up_vector != Vector3.zero && forward_vector != Vector3.zero && up_vector != forward_vector)
         {
