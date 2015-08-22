@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 97be32bece49f81419edadbbe6132da2
-timeCreated: 1440248058
+guid: 4d282b07cae9dbd4ca93b149a0ca6411
+timeCreated: 1440256703
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Straight
-    4300002: StraightStair
+    4300000: StraightStair
     9500000: //RootNode
   materials:
     importMaterials: 1
