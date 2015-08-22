@@ -13,7 +13,7 @@ public class PlayerInteractionScript : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         { 
             var ray = Camera.main.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
 
