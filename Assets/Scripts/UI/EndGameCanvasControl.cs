@@ -29,6 +29,10 @@ public class EndGameCanvasControl : MonoBehaviour
         {
             showEndGameCanvas();
         }
+        if (isVisible && !GameStateManager.Player.GetComponent<PlayerScript>().CanKillPrey())
+        {
+            hideEndGameCanvas();
+        }
         if (isVisible)
         {
             if (Input.GetKey(KeyCode.F) && !gameEnded)
@@ -36,6 +40,12 @@ public class EndGameCanvasControl : MonoBehaviour
                 endGame();
             }
         }
+    }
+
+    private void hideEndGameCanvas()
+    {
+        uiFader.Fade(0, 0.2f, EasingFunctions.TYPE.In);
+        isVisible = false;
     }
 
     public void endGame()

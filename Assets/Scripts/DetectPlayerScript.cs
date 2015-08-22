@@ -9,6 +9,9 @@ public class DetectPlayerScript : MonoBehaviour
     public FirstPersonController Player;
     public GameStateManagerScript GameState;
     public GameObject Eye;
+    public float DamageMultiplier = 1;
+
+    public float enterTime;
 
     // Use this for initialization
     void Start()
@@ -38,6 +41,13 @@ public class DetectPlayerScript : MonoBehaviour
         if (hitInfo.collider != other)
             return; // very well hidden sir
 
-        GameState.RestoreCheckpoint();
+        enterTime = Time.realtimeSinceStartup;
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject != Player.gameObject) return;
+        GameState.Player.GetComponent<PlayerScript>().takeDamage((Time.realtimeSinceStartup - enterTime) * DamageMultiplier);
+    }
+
 }

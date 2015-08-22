@@ -4,8 +4,11 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour
 {
 
+    public GameStateManagerScript GameStateManagerScript;
     public float PreyKillDistance = 5;
     public PreyWalkScript Prey;
+
+    public float health = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -20,5 +23,15 @@ public class PlayerScript : MonoBehaviour
     public bool CanKillPrey()
     {
         return (Prey.transform.position - transform.position).magnitude < PreyKillDistance;
+    }
+
+    public void takeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        if (health <= 0)
+        {
+            GameStateManagerScript.PlayerDeath();
+        }
     }
 }
