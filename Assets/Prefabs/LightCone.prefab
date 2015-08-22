@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &126466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463502}
+  - 33: {fileID: 3341162}
+  m_Layer: 0
+  m_Name: Eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &145714
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,6 +43,8 @@ GameObject:
   - 33: {fileID: 3382814}
   - 23: {fileID: 2377444}
   - 95: {fileID: 9577830}
+  - 64: {fileID: 6428532}
+  - 114: {fileID: 11414144}
   m_Layer: 0
   m_Name: LightCone
   m_TagString: Untagged
@@ -40,13 +58,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190192}
-  m_LocalRotation: {x: 1, y: 1.62920685e-07, z: 1.62920685e-07, w: 2.65431496e-14}
-  m_LocalPosition: {x: 2.55999994, y: 6, z: -3.01999998}
-  m_LocalScale: {x: 2, y: 6, z: 2}
+  m_LocalRotation: {x: .707107604, y: 2.30404652e-07, z: 2.4158453e-13, w: .707105994}
+  m_LocalPosition: {x: 0, y: 1.62199998, z: -.379999995}
+  m_LocalScale: {x: 16.0900688, y: 41.4948883, z: 16.0900784}
   m_Children:
   - {fileID: 494428}
+  - {fileID: 463502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &463502
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .0244999994, z: 0}
+  m_LocalScale: {x: .0176493004, y: .00660394272, z: .0176493004}
+  m_Children: []
+  m_Father: {fileID: 461188}
+  m_RootOrder: 1
 --- !u!4 &494428
 Transform:
   m_ObjectHideFlags: 1
@@ -83,12 +114,31 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!33 &3341162
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126466}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3382814
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190192}
+  m_Mesh: {fileID: 4300000, guid: b3b305018bd616a4cb9c916606ef306f, type: 3}
+--- !u!64 &6428532
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: b3b305018bd616a4cb9c916606ef306f, type: 3}
 --- !u!95 &9577830
 Animator:
@@ -139,6 +189,20 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11414144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce94d429fc1d6249a3bc78b1221a13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Eye: {fileID: 126466}
+  DamageMultiplier: 1
+  enterTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

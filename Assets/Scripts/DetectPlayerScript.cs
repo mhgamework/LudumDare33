@@ -6,13 +6,13 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class DetectPlayerScript : MonoBehaviour
 {
 
-    public FirstPersonController Player;
-    public GameStateManagerScript GameState;
+    private FirstPersonController Player { get { return GameState.Player; } }
+    public GameStateManagerScript GameState { get { return GameStateManagerScript.Get; } }
     public GameObject Eye;
     public float DamageMultiplier = 1;
 
     public float enterTime;
-    public Collider countingCollider = null;
+    private Collider countingCollider = null;
 
     // Use this for initialization
     void Start()
@@ -20,9 +20,17 @@ public class DetectPlayerScript : MonoBehaviour
 
     }
 
+    public void Awake()
+    {
+
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+        if (countingCollider != null)
+            GameState.Player.GetComponent<PlayerScript>().takeDamage(Time.deltaTime * DamageMultiplier);
 
     }
 
@@ -33,11 +41,11 @@ public class DetectPlayerScript : MonoBehaviour
 
         var eye = Eye.transform.position;
 
-        var ray = new Ray(eye, Vector3.Normalize( other.gameObject.transform.position- eye));
+        var ray = new Ray(eye, Vector3.Normalize(other.gameObject.transform.position - eye));
 
         RaycastHit hitInfo;
 
-        if (!Physics.Raycast(ray,out hitInfo)) throw new InvalidOperationException();
+        if (!Physics.Raycast(ray, out hitInfo)) throw new InvalidOperationException();
 
         if (hitInfo.collider != other)
             return; // very well hidden sir
@@ -51,7 +59,6 @@ public class DetectPlayerScript : MonoBehaviour
     {
         if (countingCollider != other) return;
         countingCollider = null;
-        GameState.Player.GetComponent<PlayerScript>().takeDamage((Time.realtimeSinceStartup - enterTime) * DamageMultiplier);
     }
 
 }
