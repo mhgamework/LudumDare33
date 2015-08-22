@@ -5,7 +5,7 @@ public class CheckpointScript : MonoBehaviour
 {
 
     public GameStateManagerScript GameStateManager;
-
+    private bool visited = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -19,8 +19,10 @@ public class CheckpointScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != GameStateManager.Player.gameObject) return;
-
+        if (visited) return;
+        visited = true;
         GameStateManager.TakeCheckpoint();
         GameStateManager.CheckpointCanvas.HitCheckpoint();
+        GetComponent<AudioSource>().Play();
     }
 }
