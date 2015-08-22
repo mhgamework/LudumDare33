@@ -12,6 +12,7 @@ public class DetectPlayerScript : MonoBehaviour
     public float DamageMultiplier = 1;
 
     public float enterTime;
+    public Collider countingCollider = null;
 
     // Use this for initialization
     void Start()
@@ -41,13 +42,15 @@ public class DetectPlayerScript : MonoBehaviour
         if (hitInfo.collider != other)
             return; // very well hidden sir
 
+        countingCollider = other;
         enterTime = Time.realtimeSinceStartup;
         GameState.DamageCanvasControl.showDamage();
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject != Player.gameObject) return;
+        if (countingCollider != other) return;
+        countingCollider = null;
         GameState.Player.GetComponent<PlayerScript>().takeDamage((Time.realtimeSinceStartup - enterTime) * DamageMultiplier);
     }
 
