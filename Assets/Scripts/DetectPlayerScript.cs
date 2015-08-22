@@ -5,6 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class DetectPlayerScript : MonoBehaviour {
 
     public FirstPersonController Player;
+    public GameStateManagerScript GameState;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,6 @@ public class DetectPlayerScript : MonoBehaviour {
     {
         if (other.gameObject != Player.gameObject) return;
 
-        Debug.Log("Game over!");
+        GameState.RestoreCheckpoint();
     }
 }

@@ -28,13 +28,11 @@ public class CheckpointCanvasControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.C) && !checkPointTriggered)
-        {
-            hitCheckpoint();
-        }
 	}
 
-    public void hitCheckpoint(){
+    public void HitCheckpoint()
+    {
+        if (checkPointTriggered) return;
         checkPointTriggered = true;
         StartCoroutine(fade().GetEnumerator());
     }
