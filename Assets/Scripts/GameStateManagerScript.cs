@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameStateManagerScript : MonoBehaviour
 {
+    public static GameStateManagerScript Get { get; private set; }
+
     public StartGameCanvasControl StartGameCanvas;
     public EndGameCanvasControl EndGameCanvas;
     public CheckpointCanvasControl CheckpointCanvas;
@@ -14,6 +17,10 @@ public class GameStateManagerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (Get != null && Get != this) throw new InvalidOperationException("Singleton instance of GameStateManager is being overriden");
+
+        Get = this;
+
         DisableGame();
         StartGameCanvas.gameObject.SetActive(true);
         EndGameCanvas.gameObject.SetActive(true);
