@@ -21,15 +21,21 @@ public class DamageCanvasControl : MonoBehaviour {
 	
 	}
 
+    private bool fading = false;
+
     IEnumerable<YieldInstruction> fade()
     {
         uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
         yield return new WaitForSeconds(fadeDuration + stayDuration);
         uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.Out);
+        yield return new WaitForSeconds(fadeDuration);
+        fading = false;
     }
 
     public void showDamage()
     {
+        if (fading) return;
+        fading = true;
         StartCoroutine(fade().GetEnumerator());
     }
 }

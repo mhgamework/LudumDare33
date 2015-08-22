@@ -5,22 +5,22 @@ using System.Collections.Generic;
 public class FlickeringLightScript : MonoBehaviour {
 
     [SerializeField]
-    private GameObject lightCone;
+    private DamagingLightScript lightScript;
     [SerializeField]
     private List<float> flickersequence = new List<float>(new float[]{0.1f});
     private float lightOffTime = 0;
     private float lightBurningTime = 0;
     private int currentFlickerIndex = 0;
     private bool lightBurning;
-
 	// Use this for initialization
 	void Start () {
 	   
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        lightCone.SetActive(lightBurning);
+	void Update ()
+	{
+	    lightScript.IsLightOn = lightBurning;
         if (flickersequence.Count == 0)
         {
             return;

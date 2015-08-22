@@ -11,7 +11,7 @@ public class DetectPlayerScript : MonoBehaviour
     public GameObject Eye;
     public float DamageMultiplier = 1;
 
-    public float enterTime;
+    //public float enterTime;
     private Collider countingCollider = null;
 
     // Use this for initialization
@@ -30,12 +30,17 @@ public class DetectPlayerScript : MonoBehaviour
     void Update()
     {
         if (countingCollider != null)
+        {
+            GameState.DamageCanvasControl.showDamage();
             GameState.Player.GetComponent<PlayerScript>().takeDamage(Time.deltaTime * DamageMultiplier);
+            
+        }
 
     }
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Enter: " + other.name);
         if (other.gameObject != Player.gameObject) return;
 
 
@@ -51,14 +56,23 @@ public class DetectPlayerScript : MonoBehaviour
             return; // very well hidden sir
 
         countingCollider = other;
-        enterTime = Time.realtimeSinceStartup;
-        GameState.DamageCanvasControl.showDamage();
+        //enterTime = Time.realtimeSinceStartup;
     }
 
     void OnTriggerExit(Collider other)
     {
+        Debug.Log("Exit: " +other.name);
         if (countingCollider != other) return;
         countingCollider = null;
     }
 
+    public void DisableLight()
+    {
+        countingCollider = null;
+
+    }
+
+    public void EnableLight()
+    {
+    }
 }

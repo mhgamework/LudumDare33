@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
-        Debug.Log(health);
+        //Debug.Log(health);
         if (health <= 0)
         {
             monsterDeath.Play();
