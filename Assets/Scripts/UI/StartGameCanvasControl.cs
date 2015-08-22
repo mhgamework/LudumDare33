@@ -12,6 +12,8 @@ public class StartGameCanvasControl : MonoBehaviour
 
     private bool gameStarted;
 
+    public GameStateManagerScript GameStateManager;
+
 
 	// Use this for initialization
 	void Start ()
@@ -43,5 +45,7 @@ public class StartGameCanvasControl : MonoBehaviour
     {
         uiFader.Fade(0,0.2f,EasingFunctions.TYPE.Out);
         isVisible = false;
+
+        GameStateManager.StartGame();
     }
 }

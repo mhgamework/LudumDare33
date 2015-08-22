@@ -8,42 +8,46 @@ public class EndGameCanvasControl : MonoBehaviour
     [SerializeField]
     private UIFader uiFader;
 
+    public GameStateManagerScript GameStateManager;
+
+
     private bool isVisible;
     private bool gameEnded;
 
 
-	// Use this for initialization
-	void Start ()
-	{
-	    uiFader = this.GetComponent<UIFader>();
-        uiFader.Fade(0,0,EasingFunctions.TYPE.Out);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if (Input.GetKey(KeyCode.A))
-	    {
-	        showEndGameCanvas();
-	    }
-	    if (isVisible)
-	    {
-	        if (Input.GetKey(KeyCode.F) && !gameEnded)
-	        {
-	            endGame();
-	        }
-	    }
-	}
+    // Use this for initialization
+    void Start()
+    {
+        uiFader = this.GetComponent<UIFader>();
+        uiFader.Fade(0, 0, EasingFunctions.TYPE.Out);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!isVisible && GameStateManager.Player.GetComponent<PlayerScript>().CanKillPrey())
+        {
+            showEndGameCanvas();
+        }
+        if (isVisible)
+        {
+            if (Input.GetKey(KeyCode.F) && !gameEnded)
+            {
+                endGame();
+            }
+        }
+    }
 
     public void endGame()
     {
-        gameEnded = true;
-        Debug.Log("The game has ended.");
+        GameStateManager.EndGame();
+        gameEnded = true; // TODO
     }
 
 
     public void showEndGameCanvas()
     {
-        uiFader.Fade(1,0.2f,EasingFunctions.TYPE.In);
+        uiFader.Fade(1, 0.2f, EasingFunctions.TYPE.In);
         isVisible = true;
     }
 }
