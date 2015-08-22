@@ -42,6 +42,7 @@ public class DetectPlayerScript : MonoBehaviour
             return; // very well hidden sir
 
         enterTime = Time.realtimeSinceStartup;
+        GameState.DamageCanvasControl.showDamage();
     }
 
     void OnTriggerExit(Collider other)

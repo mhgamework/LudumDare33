@@ -11,6 +11,7 @@ public class GameStateManagerScript : MonoBehaviour
     public EndGameCanvasControl EndGameCanvas;
     public CheckpointCanvasControl CheckpointCanvas;
     public DeathCanvasControl DeathCanvasControl;
+    public DamageCanvasControl DamageCanvasControl;
     public FirstPersonController Player;
     public PreyWalkScript Prey;
 

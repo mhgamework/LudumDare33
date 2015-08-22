@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     public float PreyKillDistance = 5;
     public PreyWalkScript Prey;
 
+    [SerializeField] private AudioSource monsterDeath = null;
+
     public float health = 3;
 
 	// Use this for initialization
@@ -17,7 +19,6 @@ public class PlayerScript : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
     public bool CanKillPrey()
@@ -31,6 +32,7 @@ public class PlayerScript : MonoBehaviour
         Debug.Log(health);
         if (health <= 0)
         {
+            monsterDeath.Play();
             GameStateManagerScript.PlayerDeath();
         }
     }
