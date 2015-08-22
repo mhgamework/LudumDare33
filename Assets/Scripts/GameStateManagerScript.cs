@@ -4,7 +4,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameStateManagerScript : MonoBehaviour
 {
-
+    public StartGameCanvasControl StartGameCanvas;
+    public EndGameCanvasControl EndGameCanvas;
+    public CheckpointCanvasControl CheckpointCanvas;
     public FirstPersonController Player;
     public PreyWalkScript Prey;
 
@@ -12,6 +14,9 @@ public class GameStateManagerScript : MonoBehaviour
     void Start()
     {
         DisableGame();
+        StartGameCanvas.gameObject.SetActive(true);
+        EndGameCanvas.gameObject.SetActive(true);
+        CheckpointCanvas.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
