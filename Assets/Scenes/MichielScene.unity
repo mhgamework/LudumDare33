@@ -528,6 +528,8 @@ MonoBehaviour:
   Path: {fileID: 713656550}
   PathProgression: 0
   WalkSpeed: 1
+  PianoInterval: 3
+  PianoDuration: 3
 --- !u!1 &1593153561
 GameObject:
   m_ObjectHideFlags: 0
