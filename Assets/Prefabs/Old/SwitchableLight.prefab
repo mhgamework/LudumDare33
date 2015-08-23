@@ -643,7 +643,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c24fb48ba5049e4a90fa01544ab999d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightCone: {fileID: 102678}
+  light: {fileID: 0}
+  OnMaterial: {fileID: 0}
+  OffMaterial: {fileID: 0}
+  ButtonRenderer: {fileID: 0}
 --- !u!135 &13555944
 SphereCollider:
   m_ObjectHideFlags: 1
