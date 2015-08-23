@@ -42,13 +42,6 @@ public class PlayerScript : MonoBehaviour
 	    }
 	}
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public bool CanKillPrey()
     {
         return (Prey.transform.position - transform.position).magnitude < PreyKillDistance;
