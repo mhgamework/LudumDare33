@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public float defaultWalkingSpeed = 5;
     public float defaultRunningSped = 10;
     public float damageSpeedModifier = 0.5f;
+    public float waterSpeedModifier = 0.2f;
     public float slowDuration = 1;
 
     public float healthRegenRatio;
@@ -23,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private AudioSource monsterDeath = null;
 
     public float health = 3;
+    private bool isInWater;
 
 	// Use this for initialization
 	void Start () {
@@ -31,33 +33,70 @@ public class PlayerScript : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Vector3.Distance(GameStateManagerScript.Prey.transform.position, gameObject.transform.position) > losingDistance && !GameStateManagerScript.isLost)
-	    {
-	        GameStateManagerScript.loseGame();
-	    }
-	    if (currentSlowDuration > 0)
-	    {
-	        currentSlowDuration -= Time.deltaTime;
-            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped *
-	                                                           damageSpeedModifier;
-            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed *
-	                                                            damageSpeedModifier;
-	    }
-	    else
-	    {
-	        if (health < 3)
-	        {
-	            health += healthRegenRatio*Time.deltaTime;
-	            if (health > 3)
-	            {
-	                health = 3;
-	            }
-                Debug.Log(health);
-	        }
-            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped;
-            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed;
-	    }
+        //Check distance to prey, lose if too far
+        distanceToPrey();
+        //Set movement speed to water movement speed if in water
+	    waterDebuff();
+        //Slow debuff from taking damage, water ignores this.
+	    slowDebuff();
+        //Regen health if out of slow
+        healthRegen();
 	}
+
+    private void slowDebuff()
+    {
+        if (currentSlowDuration > 0)
+        {
+            currentSlowDuration -= Time.deltaTime;
+            if (!isInWater)
+            {
+                GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped *
+                                                               damageSpeedModifier;
+                GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed *
+                                                                    damageSpeedModifier;
+            }
+        }
+        else
+        {
+            if (!isInWater)
+            {
+                GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped;
+                GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed;
+            }
+        }
+    }
+
+    private void waterDebuff()
+    {
+        if (isInWater)
+        {
+            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped*
+                                                               waterSpeedModifier;
+            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed*
+                                                                waterSpeedModifier;
+        }
+    }
+
+    private void healthRegen()
+    {
+        if (health < 3 && currentSlowDuration <= 0)
+        {
+            health += healthRegenRatio*Time.deltaTime;
+            if (health > 3)
+            {
+                health = 3;
+            }
+        }
+    }
+
+    private void distanceToPrey()
+    {
+        if (Vector3.Distance(GameStateManagerScript.Prey.transform.position, gameObject.transform.position) > losingDistance &&
+            !GameStateManagerScript.isLost)
+        {
+            GameStateManagerScript.loseGame();
+        }
+    }
 
     public bool CanKillPrey()
     {
@@ -67,7 +106,6 @@ public class PlayerScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
-        //Debug.Log(health);
         if (health <= 0)
         {
             monsterDeath.Play();
@@ -78,11 +116,12 @@ public class PlayerScript : MonoBehaviour
 
     public void OnWaterEnter()
     {
-
+        isInWater = true;
     }
 
     public void OnWaterExit()
     {
-
+        isInWater = false;
+        currentSlowDuration = slowDuration;
     }
 }
