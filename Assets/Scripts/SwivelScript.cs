@@ -22,7 +22,7 @@ public class SwivelScript : MonoBehaviour
 	{
 	    var range = swivelEndPosition - swivelStartPosition;
         var rotationAngle = sawtooth(Time.timeSinceLevelLoad/range*swivelSpeed);
-        Debug.Log(rotationAngle);
+        //Debug.Log(rotationAngle);
 	    rotationAngle = rotationAngle*range + swivelStartPosition;
 
         thingToSwivel.transform.localRotation = Quaternion.AngleAxis(rotationAngle, Vector3.forward);

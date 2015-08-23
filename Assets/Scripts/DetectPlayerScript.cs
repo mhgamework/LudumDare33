@@ -40,7 +40,7 @@ public class DetectPlayerScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter: " + other.name);
+        //Debug.Log("Enter: " + other.name);
         if (other.gameObject != Player.gameObject) return;
 
 
@@ -61,7 +61,7 @@ public class DetectPlayerScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit: " +other.name);
+        //Debug.Log("Exit: " +other.name);
         if (countingCollider != other) return;
         countingCollider = null;
     }
