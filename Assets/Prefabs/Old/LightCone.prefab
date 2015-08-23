@@ -202,7 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Eye: {fileID: 126466}
   DamageMultiplier: 1
-  enterTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
