@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerScript : MonoBehaviour
@@ -24,6 +25,9 @@ public class PlayerScript : MonoBehaviour
     private float currentSlowDuration = 0;
 
     public PlayerSoundScript SoundScript;
+
+    [SerializeField] private List<AudioClip> drySteps = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> wetSteps = new List<AudioClip>();
 
     public float health = 3;
     private bool isInWater;
@@ -121,11 +125,13 @@ public class PlayerScript : MonoBehaviour
     public void OnWaterEnter()
     {
         isInWater = true;
+        GetComponent<FirstPersonController>().m_FootstepSounds = wetSteps.ToArray();
     }
 
     public void OnWaterExit()
     {
         isInWater = false;
         currentSlowDuration = slowDuration;
+        GetComponent<FirstPersonController>().m_FootstepSounds = drySteps.ToArray();
     }
 }

@@ -66,8 +66,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 472754}
   - 82: {fileID: 8253342}
+  - 114: {fileID: 11448412}
   m_Layer: 0
-  m_Name: MonsterDeathSound
+  m_Name: MonsterSoundPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,8 +116,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159746}
-  m_LocalRotation: {x: 4.05106643e-11, y: .709102929, z: 4.07012965e-11, w: .705105007}
-  m_LocalPosition: {x: -48.9000015, y: 1.21000004, z: 14.6000004}
+  m_LocalRotation: {x: -1.34732503e-13, y: .00282810628, z: 5.742554e-11, w: .999996006}
+  m_LocalPosition: {x: .100000001, y: 1.07000005, z: -11.6700001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416676}
@@ -397,10 +398,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903fb3bbe8de2324e9aae30260f38286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStateManagerScript: {fileID: 0}
   PreyKillDistance: 5
-  Prey: {fileID: 0}
-  monsterDeath: {fileID: 8253342}
+  defaultWalkingSpeed: 5
+  defaultRunningSped: 10
+  damageSpeedModifier: .5
+  waterSpeedModifier: .200000003
+  slowDuration: 1
+  healthRegenRatio: 0
+  losingDistance: 100
+  SoundScript: {fileID: 11448412}
+  drySteps:
+  - {fileID: 8300000, guid: af47e6c36fe912f46bb87fb4c7af37de, type: 3}
+  - {fileID: 8300000, guid: f4403c06858124d4dad83d092ac17af6, type: 3}
+  - {fileID: 8300000, guid: 40cbe528a1df73c48a49a1c304fdc036, type: 3}
+  - {fileID: 8300000, guid: 72177c7d4c921164bbf659bac7addbc3, type: 3}
+  - {fileID: 8300000, guid: 6cd56c13a89eaac4bbe0efd4f97359c0, type: 3}
+  - {fileID: 8300000, guid: 8a764db9fcf615f4aa320a7c42704f0a, type: 3}
+  wetSteps:
+  - {fileID: 8300000, guid: aa8969817b64e324e881d0d4a0cb8d20, type: 3}
+  - {fileID: 8300000, guid: c51909756a7eb8748b7000e43719175e, type: 3}
+  - {fileID: 8300000, guid: dc137ea4046d1ea44bf1c90c3a6ce9eb, type: 3}
+  - {fileID: 8300000, guid: f18276ba9d0f24b43a061b6f543501e6, type: 3}
+  - {fileID: 8300000, guid: 6a7486dea3e2e5f4b86c2bc80eb8d00a, type: 3}
+  - {fileID: 8300000, guid: 0b65763b4a3e165428794a1aa37a1d94, type: 3}
   health: 3
 --- !u!114 &11400486
 MonoBehaviour:
@@ -437,6 +457,21 @@ MonoBehaviour:
   blurIterations: 1
   blurType: 0
   fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+--- !u!114 &11448412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0b775d4b07064498540eacbfa7978e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterHurt: {fileID: 8300000, guid: f4afaee44534b294a928ad8acac87cf4, type: 3}
+  DinnerTime: {fileID: 8300000, guid: e92eb9dae282e5045812de71ad0ab522, type: 3}
+  MonsterDeath: {fileID: 8300000, guid: 853eaaf5041a53b419ef23434ec60141, type: 3}
+  MonsterChewing: {fileID: 8300000, guid: 78bce921c2530a347b2df83397b3a011, type: 3}
 --- !u!114 &11459888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -551,8 +586,12 @@ MonoBehaviour:
     BobAmount: .100000001
   m_StepInterval: 5
   m_FootstepSounds:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: af47e6c36fe912f46bb87fb4c7af37de, type: 3}
+  - {fileID: 8300000, guid: f4403c06858124d4dad83d092ac17af6, type: 3}
+  - {fileID: 8300000, guid: 40cbe528a1df73c48a49a1c304fdc036, type: 3}
+  - {fileID: 8300000, guid: 72177c7d4c921164bbf659bac7addbc3, type: 3}
+  - {fileID: 8300000, guid: 6cd56c13a89eaac4bbe0efd4f97359c0, type: 3}
+  - {fileID: 8300000, guid: 8a764db9fcf615f4aa320a7c42704f0a, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
 --- !u!114 &11490790
