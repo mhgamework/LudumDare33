@@ -14,7 +14,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &139058
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 495384}
   - 33: {fileID: 3322830}
   - 23: {fileID: 2392542}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TubeCrossing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
