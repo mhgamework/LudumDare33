@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour
     public float PreyKillDistance = 5;
     public PreyWalkScript Prey { get { return GameStateManagerScript.Prey; } }
 
+    public bool IsAlive { get { return health > 0; } }
+
     public float defaultWalkingSpeed = 5;
     public float defaultRunningSped = 10;
     public float damageSpeedModifier = 0.5f;
@@ -110,7 +112,7 @@ public class PlayerScript : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            SoundScript.PlayMonsterDeath();
+            // Check death
             GameStateManagerScript.PlayerDeath();
         }
         currentSlowDuration = slowDuration;

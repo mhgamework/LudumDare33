@@ -29,13 +29,13 @@ public class DetectPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countingCollider != null)
+        if (countingCollider == null) return;
+        if (GameState.PlayerScript.IsAlive)
         {
-            GameState.DamageCanvasControl.showDamage();
-            GameState.Player.GetComponent<PlayerScript>().takeDamage(Time.deltaTime * DamageMultiplier);
-            
-        }
+            GameState.DamageCanvasControl.blinkDamage();
 
+            GameState.Player.GetComponent<PlayerScript>().takeDamage(Time.deltaTime * DamageMultiplier);
+        }
     }
 
     void OnTriggerEnter(Collider other)

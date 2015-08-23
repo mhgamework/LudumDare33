@@ -37,6 +37,12 @@ public class GameStateManagerScript : MonoBehaviour
     public UnPauseEventHandler UnPauseEvent = new UnPauseEventHandler();
     public PauseEventHandler PauseEvent = new PauseEventHandler();
 
+    public GameStateManagerScript()
+    {
+
+
+    }
+
     public Camera PlayerCamera;
 
     // Use this for initialization
@@ -51,15 +57,23 @@ public class GameStateManagerScript : MonoBehaviour
         DisableGameSimulation();
         StartGameCanvas.Show();
 
+
         /*StartGameCanvas.gameObject.SetActive(true);
         EndGameCanvas.gameObject.SetActive(true);
         CheckpointCanvas.gameObject.SetActive(true);*/
     }
 
+    private bool firstFrame = true;
+
     // Update is called once per frame
     void Update()
     {
-
+        if (firstFrame)
+        {
+            DisableGameSimulation();
+            StartGameCanvas.Show();
+            firstFrame = false;
+        }
     }
 
     public void DisableGameSimulation()
@@ -68,7 +82,7 @@ public class GameStateManagerScript : MonoBehaviour
         Prey.enabled = false;
         SimulationEnabled = false;
         PauseEvent.Invoke();
-        
+
     }
 
     public void EnableGameSimulation()
@@ -100,6 +114,8 @@ public class GameStateManagerScript : MonoBehaviour
 
     public void EndGame()
     {
+        //TODO: fix this
+
         isEnded = true;
         if (CreditsCanvasControl != null)
             CreditsCanvasControl.triggerCredits();
@@ -122,14 +138,28 @@ public class GameStateManagerScript : MonoBehaviour
 
     IEnumerable<YieldInstruction> die()
     {
-        EndGameCanvas.gameObject.SetActive(false);
-        DeathCanvasControl.triggerDeath();
+        PlayerScript.SoundScript.PlayMonsterDeath();
+        DisableGameSimulation();
+        
+        //Hack
+        //EndGameCanvas.gameObject.SetActive(false);
+        DamageCanvasControl.ShowDamagePermanent();
+
+        DeathCanvasControl.Show();
+
         yield return new WaitForSeconds(DeathCanvasControl.fadeDuration + DeathCanvasControl.stayDuration);
+
         RestoreCheckpoint();
+
+        EnableGameSimulation();
+
+        DeathCanvasControl.Hide();
+        DamageCanvasControl.ResetDamagePermanent();
     }
 
     public void PlayerDeath()
     {
+        if (!SimulationEnabled) return;
         StartCoroutine(die().GetEnumerator());
     }
 

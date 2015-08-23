@@ -28,7 +28,7 @@ public class StartGameCanvasControl : MonoBehaviour
         textFader.Fade(1, 1, EasingFunctions.TYPE.In);
         yield return new WaitForSeconds(1);
         while (!Input.GetKey(KeyCode.S)) yield return null;
-        uiFader.Fade(0, 1f, EasingFunctions.TYPE.Out);
+        uiFader.Fade(0, 3f, EasingFunctions.TYPE.Out);
         GameStateManager.EnableGameSimulation();
         GameStateManager.PlayerScript.SoundScript.PlayDinnerTime();
         isVisible = false;

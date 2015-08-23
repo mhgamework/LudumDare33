@@ -29,8 +29,17 @@ public class DeathCanvasControl : MonoBehaviour {
 	
 	}
 
-    public void triggerDeath()
+
+    public void Show()
     {
-        StartCoroutine(fade().GetEnumerator());
+        uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
+        //StartCoroutine(fade().GetEnumerator());
+
+    }
+
+    public void Hide()
+    {
+        uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.Out);
+        
     }
 }

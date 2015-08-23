@@ -13,7 +13,6 @@ public class EndGameCanvasControl : MonoBehaviour
 
 
     private bool isVisible;
-    private bool gameEnded;
     public float fadeDuration;
     public float stayDuration;
 
@@ -42,9 +41,10 @@ public class EndGameCanvasControl : MonoBehaviour
         }
         if (isVisible)
         {
-            if (Input.GetKey(KeyCode.F) && !gameEnded)
+            if (Input.GetKey(KeyCode.F))// && !gameEnded)
             {
-                endGame();
+                GameStateManager.EndGame();
+                //gameEnded = true; // TODO
             }
         }
     }
@@ -64,12 +64,6 @@ public class EndGameCanvasControl : MonoBehaviour
         isVisible = false;
     }
 
-    public void endGame()
-    {
-        GameStateManager.EndGame();
-        gameEnded = true; // TODO
-    }
-
 
     public void showEndGameCanvas()
     {
@@ -80,4 +74,5 @@ public class EndGameCanvasControl : MonoBehaviour
         isVisible = true;
         StartCoroutine(fade().GetEnumerator());
     }
+
 }

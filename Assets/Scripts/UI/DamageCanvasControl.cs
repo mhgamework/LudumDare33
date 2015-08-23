@@ -10,6 +10,8 @@ public class DamageCanvasControl : MonoBehaviour {
     public float fadeDuration;
     public float stayDuration;
 
+    public bool showPermanent = false;
+
 	// Use this for initialization
 	void Start () {
         uiFader = this.GetComponent<UIFader>();
@@ -33,10 +35,27 @@ public class DamageCanvasControl : MonoBehaviour {
         fading = false;
     }
 
-    public void showDamage()
+    public void blinkDamage()
     {
+        if (showPermanent) return;
         if (fading) return;
         fading = true;
         StartCoroutine(fade().GetEnumerator());
     }
+
+
+    public void ShowDamagePermanent()
+    {
+        showPermanent = true;
+        uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
+        
+    }
+
+    public void ResetDamagePermanent()
+    {
+        showPermanent = false;
+        uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.In);
+
+    }
+
 }
