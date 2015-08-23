@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameStateManagerScript : MonoBehaviour
@@ -44,6 +45,7 @@ public class GameStateManagerScript : MonoBehaviour
     {
         Player.enabled = true;
         Prey.enabled = true;
+        EndGameCanvas.gameObject.SetActive(true);
         TakeCheckpoint();
     }
 
@@ -64,10 +66,17 @@ public class GameStateManagerScript : MonoBehaviour
         };
     }
 
+    IEnumerable<YieldInstruction> die()
+    {
+        EndGameCanvas.gameObject.SetActive(false);
+        DeathCanvasControl.triggerDeath();
+        yield return new WaitForSeconds(DeathCanvasControl.fadeDuration + DeathCanvasControl.stayDuration);
+        RestoreCheckpoint();
+    }
+
     public void PlayerDeath()
     {
-        DeathCanvasControl.triggerDeath();
-        RestoreCheckpoint();
+        StartCoroutine(die().GetEnumerator());
     }
 
     private void RestoreCheckpoint()
