@@ -13,7 +13,7 @@ public class DamageCanvasControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         uiFader = this.GetComponent<UIFader>();
-        uiFader.Fade(0, 0, EasingFunctions.TYPE.In);
+        uiFader.Fade(0, 0, EasingFunctions.TYPE.Out);
 	}
 	
 	// Update is called once per frame

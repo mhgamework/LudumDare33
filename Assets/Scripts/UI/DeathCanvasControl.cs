@@ -21,7 +21,7 @@ public class DeathCanvasControl : MonoBehaviour {
     {
         uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
         yield return new WaitForSeconds(fadeDuration + stayDuration);
-        uiFader.Fade(0, stayDuration, EasingFunctions.TYPE.Out);
+        uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.Out);
     }
 
 	// Update is called once per frame

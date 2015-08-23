@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 
 public class EndGameCanvasControl : MonoBehaviour
@@ -13,6 +14,8 @@ public class EndGameCanvasControl : MonoBehaviour
 
     private bool isVisible;
     private bool gameEnded;
+    public float fadeDuration;
+    public float stayDuration;
 
 
     // Use this for initialization
@@ -42,6 +45,15 @@ public class EndGameCanvasControl : MonoBehaviour
         }
     }
 
+    IEnumerable<YieldInstruction> fade()
+    {
+        uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
+        yield return new WaitForSeconds(fadeDuration + stayDuration);
+        uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.Out);
+        yield return new WaitForSeconds(fadeDuration);
+        isVisible = false;
+    }
+
     private void hideEndGameCanvas()
     {
         uiFader.Fade(0, 0.2f, EasingFunctions.TYPE.In);
@@ -57,7 +69,11 @@ public class EndGameCanvasControl : MonoBehaviour
 
     public void showEndGameCanvas()
     {
-        uiFader.Fade(1, 0.2f, EasingFunctions.TYPE.In);
+        if (isVisible)
+        {
+            return;
+        }
         isVisible = true;
+        StartCoroutine(fade().GetEnumerator());
     }
 }
