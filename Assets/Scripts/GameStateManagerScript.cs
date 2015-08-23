@@ -112,6 +112,9 @@ public class GameStateManagerScript : MonoBehaviour
 
     IEnumerable<YieldInstruction> lose()
     {
+        if (LostCanvasControl == null)
+            yield break;
+
         LostCanvasControl.triggerLose();
         yield return new WaitForSeconds(LostCanvasControl.fadeDuration + LostCanvasControl.stayDuration);
         RestoreCheckpoint();
