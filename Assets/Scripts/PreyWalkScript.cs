@@ -66,7 +66,7 @@ public class PreyWalkScript : MonoBehaviour
 
     private IEnumerable<YieldInstruction> DoPiano()
     {
- if (EthanAnimator != null)
+        if (EthanAnimator != null)
         {
             EthanAnimator.Play("HumanoidIdle");
         }
@@ -200,5 +200,4 @@ public class PreyWalkScript : MonoBehaviour
 
         return true;
     }
-
 }

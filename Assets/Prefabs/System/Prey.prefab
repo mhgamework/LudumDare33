@@ -2231,7 +2231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.4200001, y: 0, z: 21.8700008}
+  m_LocalPosition: {x: 32.3800011, y: 0, z: -146.270004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448584}
@@ -3271,7 +3271,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!54 &5427668
 Rigidbody:
@@ -3587,6 +3587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b444370b3a49bb49b13dc5b9c7460c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EthanAnimator: {fileID: 9555714}
   Path: {fileID: 0}
   PathProgression: 0
   WalkSpeed: 2
@@ -3882,8 +3883,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: -7.62939453e-06, z: -3.81469727e-06}
-    m_Extent: {x: 2.50000286, y: 4.99999619, z: 4.71033669}
+    m_Center: {x: 0, y: -6.10351562e-05, z: 0}
+    m_Extent: {x: 2.49999785, y: 5.00002098, z: 4.71035385}
   m_DirtyAABB: 0
 --- !u!183 &18378390
 Cloth:

@@ -1649,7 +1649,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 449172, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 32.3800011
+      value: 32.0099983
       objectReference: {fileID: 0}
     - target: {fileID: 449172, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1657,7 +1657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449172, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -146.270004
+      value: -146.190002
       objectReference: {fileID: 0}
     - target: {fileID: 449172, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1681,24 +1681,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .532675207
+      value: .532675147
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0703404546
+      value: .0703404471
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .836132765
+      value: .836132646
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.110415146
+      value: -.110415131
       objectReference: {fileID: 0}
     - target: {fileID: 11426626, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: Path
       value: 
       objectReference: {fileID: 912424699}
+    - target: {fileID: 13778372, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
+      propertyPath: m_AABB.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13778372, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
+      propertyPath: m_AABB.m_Center.z
+      value: 3.05175781e-05
+      objectReference: {fileID: 0}
+    - target: {fileID: 13778372, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
+      propertyPath: m_AABB.m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
   m_IsPrefabParent: 0
