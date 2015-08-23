@@ -33,6 +33,13 @@ public class LostCanvasControl : MonoBehaviour {
 
     public void triggerLose()
     {
-        StartCoroutine(fade().GetEnumerator());
+        uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
+        //StartCoroutine(fade().GetEnumerator());
+    }
+
+    public void Hide()
+    {
+        uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.Out);
+        //throw new System.NotImplementedException();
     }
 }

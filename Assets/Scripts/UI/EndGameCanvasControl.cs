@@ -58,7 +58,7 @@ public class EndGameCanvasControl : MonoBehaviour
         isVisible = false;
     }
 
-    private void hideEndGameCanvas()
+    public void hideEndGameCanvas()
     {
         uiFader.Fade(0, 0.2f, EasingFunctions.TYPE.In);
         isVisible = false;

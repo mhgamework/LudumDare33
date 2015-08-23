@@ -101,13 +101,14 @@ public class GameStateManagerScript : MonoBehaviour
 
     public void StartGame()
     {
-        throw new NotImplementedException("Is removed! maybe use enablegamesim?");
+        //throw new NotImplementedException("Is removed! maybe use enablegamesim?");
 
     }
 
     IEnumerable<YieldInstruction> end()
     {
-        CreditsCanvasControl.triggerCredits();
+        if (CreditsCanvasControl != null)
+            CreditsCanvasControl.Show();
         yield return new WaitForSeconds(creditsDuration);
         StartGame();
     }
@@ -115,12 +116,14 @@ public class GameStateManagerScript : MonoBehaviour
     public void EndGame()
     {
         //TODO: fix this
-
+        DisableGameSimulation();
         isEnded = true;
-        if (CreditsCanvasControl != null)
-            CreditsCanvasControl.triggerCredits();
-        PlayerScript.SoundScript.PlayMonsterChewing();
-        Debug.Log("The game has ended.");
+
+        StartCoroutine(end().GetEnumerator());
+
+
+
+
     }
 
     private CheckpointData lastCheckpoint;
@@ -140,7 +143,7 @@ public class GameStateManagerScript : MonoBehaviour
     {
         PlayerScript.SoundScript.PlayMonsterDeath();
         DisableGameSimulation();
-        
+
         //Hack
         //EndGameCanvas.gameObject.SetActive(false);
         DamageCanvasControl.ShowDamagePermanent();
@@ -184,9 +187,21 @@ public class GameStateManagerScript : MonoBehaviour
         if (LostCanvasControl == null)
             yield break;
 
+        PlayerScript.SoundScript.PlayMonsterDeath();
+        DisableGameSimulation();
+
+        //Hack
+        //EndGameCanvas.gameObject.SetActive(false);
+        DamageCanvasControl.ShowDamagePermanent();
+
         LostCanvasControl.triggerLose();
         yield return new WaitForSeconds(LostCanvasControl.fadeDuration + LostCanvasControl.stayDuration);
         RestoreCheckpoint();
+
+        EnableGameSimulation();
+
+        LostCanvasControl.Hide();
+        DamageCanvasControl.ResetDamagePermanent();
     }
 
     public void loseGame()
