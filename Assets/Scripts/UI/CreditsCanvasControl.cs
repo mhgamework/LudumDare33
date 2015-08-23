@@ -26,6 +26,11 @@ public class CreditsCanvasControl : MonoBehaviour
     {
         GameStateManager.PlayerScript.SoundScript.PlayMonsterChewing();
 
-        uiFader.Fade(1, 0.1f, EasingFunctions.TYPE.In);
+        uiFader.Fade(2, 0.5f, EasingFunctions.TYPE.In);
+    }
+
+    public void Hide()
+    {
+        uiFader.Fade(1, 4f, EasingFunctions.TYPE.In);
     }
 }

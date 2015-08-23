@@ -1014,7 +1014,7 @@ Prefab:
       objectReference: {fileID: 2032125661}
     - target: {fileID: 11422198, guid: 16256c060d529d9438870979a8befd8c, type: 2}
       propertyPath: creditsDuration
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11422198, guid: 16256c060d529d9438870979a8befd8c, type: 2}
       propertyPath: LostCanvasControl
@@ -1709,19 +1709,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .532675147
+      value: .532675207
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0703404471
+      value: .0703404546
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .836132646
+      value: .836132765
       objectReference: {fileID: 0}
     - target: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.110415131
+      value: -.110415146
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}

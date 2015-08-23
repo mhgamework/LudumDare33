@@ -101,8 +101,7 @@ public class GameStateManagerScript : MonoBehaviour
 
     public void StartGame()
     {
-        //throw new NotImplementedException("Is removed! maybe use enablegamesim?");
-
+        Application.LoadLevel("TitleScene");
     }
 
     IEnumerable<YieldInstruction> end()
@@ -110,6 +109,8 @@ public class GameStateManagerScript : MonoBehaviour
         if (CreditsCanvasControl != null)
             CreditsCanvasControl.Show();
         yield return new WaitForSeconds(creditsDuration);
+        CreditsCanvasControl.Hide();
+        yield return new WaitForSeconds(4);
         StartGame();
     }
 
