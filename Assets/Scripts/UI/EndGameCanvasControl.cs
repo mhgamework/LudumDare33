@@ -9,7 +9,7 @@ public class EndGameCanvasControl : MonoBehaviour
     [SerializeField]
     private UIFader uiFader;
 
-    public GameStateManagerScript GameStateManager;
+    public GameStateManagerScript GameStateManager { get { return GameStateManagerScript.Get; } }
 
 
     private bool isVisible;

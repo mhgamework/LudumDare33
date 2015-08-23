@@ -12,27 +12,28 @@ public class StartGameCanvasControl : MonoBehaviour
 
     private bool gameStarted;
 
-    public GameStateManagerScript GameStateManager;
+    public GameStateManagerScript GameStateManager { get { return GameStateManagerScript.Get; } }
 
 
-	// Use this for initialization
-	void Start ()
-	{
-	    uiFader = this.GetComponent<UIFader>();
-        uiFader.Fade(1,0,EasingFunctions.TYPE.In);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if (isVisible)
-	    {
-	        if (Input.GetKey(KeyCode.S) && !gameStarted)
-	        {
+    // Use this for initialization
+    void Start()
+    {
+        uiFader = this.GetComponent<UIFader>();
+        uiFader.Fade(1, 0, EasingFunctions.TYPE.In);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isVisible)
+        {
+            if (Input.GetKey(KeyCode.S) && !gameStarted)
+            {
                 hideStartGameCanvas();
-	            startGame();
-	        }
-	    }
-	}
+                startGame();
+            }
+        }
+    }
 
     public void startGame()
     {
@@ -43,7 +44,7 @@ public class StartGameCanvasControl : MonoBehaviour
 
     public void hideStartGameCanvas()
     {
-        uiFader.Fade(0,0.2f,EasingFunctions.TYPE.Out);
+        uiFader.Fade(0, 0.2f, EasingFunctions.TYPE.Out);
         isVisible = false;
 
         GameStateManager.StartGame();

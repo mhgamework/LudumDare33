@@ -5,9 +5,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PlayerScript : MonoBehaviour
 {
 
-    public GameStateManagerScript GameStateManagerScript;
+    public GameStateManagerScript GameStateManagerScript { get { return GameStateManagerScript.Get; } }
     public float PreyKillDistance = 5;
-    public PreyWalkScript Prey;
+    public PreyWalkScript Prey { get { return GameStateManagerScript.Prey; } }
 
     public float defaultWalkingSpeed = 5;
     public float defaultRunningSped = 10;
@@ -42,6 +42,13 @@ public class PlayerScript : MonoBehaviour
 	    }
 	}
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
+
     public bool CanKillPrey()
     {
         return (Prey.transform.position - transform.position).magnitude < PreyKillDistance;
@@ -61,11 +68,11 @@ public class PlayerScript : MonoBehaviour
 
     public void OnWaterEnter()
     {
-        
+
     }
 
     public void OnWaterExit()
     {
-        
+
     }
 }
