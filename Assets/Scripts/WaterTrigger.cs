@@ -14,14 +14,20 @@ public class WaterTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("(WATERTRIGGER) enter");
+        if(other.GetComponentInParent<PlayerScript>() == null)
+            return;
+
+        Debug.Log("(WATERTRIGGER) enter");
         if (GameStateManagerScript.Get != null)
             GameStateManagerScript.Get.Player.GetComponent<PlayerScript>().OnWaterEnter();
     }
 
     public void OnTriggerExit(Collider other)
     {
-        //Debug.Log("(WATERTRIGGER) exit");
+        if (other.GetComponentInParent<PlayerScript>() == null)
+            return;
+
+        Debug.Log("(WATERTRIGGER) exit");
         if (GameStateManagerScript.Get != null)
             GameStateManagerScript.Get.Player.GetComponent<PlayerScript>().OnWaterExit();
     }
