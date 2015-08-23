@@ -13,6 +13,7 @@ public class PreyWalkScript : MonoBehaviour
     public float PianoDuration = 2;
 
     private WaypointNodeScript lastVisitedNode;
+    [SerializeField] private AudioSource huh;
 
     // Use this for initialization
     void Start()
@@ -63,6 +64,8 @@ public class PreyWalkScript : MonoBehaviour
 
     private IEnumerable<YieldInstruction> DoPiano()
     {
+        huh.Play();
+        yield return new WaitForSeconds(0.64f);
         var lookDir = GetFromPoint() - GetTargetPoint();
 
         var timeLeft = PianoDuration;
