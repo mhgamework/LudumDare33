@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fde933cd188de848a55e0ae90bd44dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RaycastDistance: 1
+  RaycastDistance: 2
 --- !u!143 &14319606
 CharacterController:
   m_ObjectHideFlags: 1
