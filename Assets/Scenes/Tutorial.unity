@@ -1813,7 +1813,7 @@ MonoBehaviour:
   slowDuration: 1
   healthRegenRatio: 0
   losingDistance: 100
-  monsterDeath: {fileID: 1867595757}
+  SoundScript: {fileID: 0}
   health: 3
 --- !u!4 &283756328
 Transform:
@@ -8000,7 +8000,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 141996, guid: 66f9f0e13254dfc4ca83bf6d77784cfd, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f9f0e13254dfc4ca83bf6d77784cfd, type: 2}
@@ -12609,11 +12609,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f3e96bb229dbd14fb81aac9f309a80f, type: 2}
   m_IsPrefabParent: 0
---- !u!82 &1867595757 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 8263396, guid: 5f3e96bb229dbd14fb81aac9f309a80f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1867595756}
 --- !u!4 &1867595758 stripped
 Transform:
   m_PrefabParentObject: {fileID: 469502, guid: 5f3e96bb229dbd14fb81aac9f309a80f, type: 2}
@@ -13132,7 +13127,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 157082, guid: 6d32b87a3fa7cea4185d95b887567584, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11445092, guid: 6d32b87a3fa7cea4185d95b887567584, type: 2}
       propertyPath: GameStateManager
@@ -13871,7 +13866,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113956, guid: 0e92b6856cdf5924080842957e0acbd5, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11472318, guid: 0e92b6856cdf5924080842957e0acbd5, type: 2}
       propertyPath: GameStateManager

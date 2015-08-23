@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PreyWalkScript : MonoBehaviour
 {
+    [SerializeField]
+    private Animator EthanAnimator = null;
 
     public WaypointPathScript Path;
 
@@ -64,9 +66,21 @@ public class PreyWalkScript : MonoBehaviour
 
     private IEnumerable<YieldInstruction> DoPiano()
     {
+ if (EthanAnimator != null)
+        {
+            EthanAnimator.Play("HumanoidIdle");
+        }
+
         huh.Play();
-        yield return new WaitForSeconds(0.64f);
+        yield return new WaitForSeconds(0.64f);       
+        
+
         var lookDir = GetFromPoint() - GetTargetPoint();
+
+        //rotate backwards
+        var rotation_time = 1f;
+        StartCoroutine("UpdateRotation", new object[] { Quaternion.LookRotation(lookDir, Vector3.up), rotation_time });
+        yield return new WaitForSeconds(rotation_time);
 
         var timeLeft = PianoDuration;
         while (timeLeft > 0)
@@ -84,7 +98,36 @@ public class PreyWalkScript : MonoBehaviour
             yield return null;
             timeLeft -= Time.deltaTime;
         }
+
+        //rotate to path rotation again
+        StartCoroutine("UpdateRotation", new object[] { Quaternion.LookRotation(GetTargetPoint() - GetFromPoint(), Vector3.up), rotation_time });
+        yield return new WaitForSeconds(rotation_time);
+
+        if (EthanAnimator != null)
+        {
+            EthanAnimator.Play("HumanoidWalk");
+        }
+
         StartCoroutine(WalkPath().GetEnumerator());
+    }
+
+    private IEnumerator UpdateRotation(object[] args)
+    {
+        Quaternion targetRot = (Quaternion)args[0];
+        float rot_time = (float)args[1];
+
+        var prey_transform = GetComponent<Transform>();
+        var oriRot = prey_transform.rotation;
+
+        var elapsed = 0f;
+        while (elapsed < rot_time)
+        {
+            prey_transform.rotation = EasingFunctions.Ease(EasingFunctions.TYPE.Regular, elapsed / rot_time, oriRot, targetRot);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        prey_transform.rotation = targetRot;
     }
 
     private WaypointNodeScript GetFromNode()
