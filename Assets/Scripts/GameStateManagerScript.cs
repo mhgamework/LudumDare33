@@ -21,12 +21,17 @@ public class GameStateManagerScript : MonoBehaviour
     public bool isEnded;
     public bool isLost;
 
+    public Camera PlayerCamera;
+
     // Use this for initialization
     void Start()
     {
         if (Get != null && Get != this) throw new InvalidOperationException("Singleton instance of GameStateManager is being overriden");
 
         Get = this;
+
+        if (PlayerCamera != null)
+            PlayerCamera.clearStencilAfterLightingPass = true;
 
         DisableGame();
         StartGameCanvas.gameObject.SetActive(true);
