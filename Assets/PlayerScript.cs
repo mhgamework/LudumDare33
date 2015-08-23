@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public float damageSpeedModifier = 0.5f;
     public float slowDuration = 1;
 
+    public float healthRegenRatio;
+
     public float losingDistance = 100;
 
     private float currentSlowDuration = 0;
@@ -43,6 +45,15 @@ public class PlayerScript : MonoBehaviour
 	    }
 	    else
 	    {
+	        if (health < 3)
+	        {
+	            health += healthRegenRatio*Time.deltaTime;
+	            if (health > 3)
+	            {
+	                health = 3;
+	            }
+                Debug.Log(health);
+	        }
             GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped;
             GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed;
 	    }
