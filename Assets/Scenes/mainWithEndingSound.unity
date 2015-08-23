@@ -740,25 +740,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1316765977}
   m_Script: {fileID: 11500000, guid: 004f94b461f0015438c23829f0d7593f, type: 3}
---- !u!1 &1367793759 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 164708, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
-  m_PrefabInternal: {fileID: 1823759678}
---- !u!114 &1367793762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1367793759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc0b775d4b07064498540eacbfa7978e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MonsterHurt: {fileID: 8300000, guid: f4afaee44534b294a928ad8acac87cf4, type: 3}
-  DinnerTime: {fileID: 8300000, guid: e92eb9dae282e5045812de71ad0ab522, type: 3}
-  MonsterDeath: {fileID: 8300000, guid: 853eaaf5041a53b419ef23434ec60141, type: 3}
-  MonsterChewing: {fileID: 8300000, guid: 78bce921c2530a347b2df83397b3a011, type: 3}
 --- !u!1001 &1396969933
 Prefab:
   m_ObjectHideFlags: 0
@@ -1459,14 +1440,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 164708, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
-      propertyPath: m_Name
-      value: MonsterSoundPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400274, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
-      propertyPath: SoundScript
-      value: 
-      objectReference: {fileID: 1367793762}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
   m_IsPrefabParent: 0
