@@ -18,18 +18,26 @@ public class TitleScreenManagerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         if (starting) return;
-	    if (Input.anyKey)
+	   /* if (Input.anyKey)
 	    {
 	        starting = true;
-	        StartCoroutine(StartLoadLevel().GetEnumerator());
-	    }
+	        StartCoroutine(StartLoadLevel("").GetEnumerator());
+	    }*/
 	}
 
-    IEnumerable<YieldInstruction> StartLoadLevel()
+    IEnumerable<YieldInstruction> StartLoadLevel(string name)
     {
         BlackOverlay.GetComponent<UIFader>().Fade(1, 3, EasingFunctions.TYPE.Out);
         yield return new WaitForSeconds(3);
-        Application.LoadLevel("main");
+        Application.LoadLevel(name);
 
     }
+
+    public void LoadLevel(string name)
+    {
+        if (starting) return;
+        starting = true;
+        StartCoroutine(StartLoadLevel(name).GetEnumerator());
+    }
+
 }
