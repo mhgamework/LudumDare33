@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 462150}
   m_Layer: 0
-  m_Name: CheckPoint_Prefab
+  m_Name: CheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -45.9093056, y: -.247250736, z: 11.1215191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482380}
@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9343fdf6a21b6a42827d452b2b10712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStateManager: {fileID: 0}
 --- !u!114 &11464164
 MonoBehaviour:
   m_ObjectHideFlags: 1

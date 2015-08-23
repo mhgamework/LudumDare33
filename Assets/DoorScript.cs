@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class DoorScript : MonoBehaviour
 {
 
-    public float ClosedAngle;
-    public float TurnTime;
-
+    public Vector3 OpenOffset;
+    public float CloseTime;
+    public Transform MovingPart;
 
     // Use this for initialization
     void Start()
     {
-
+        MovingPart.position += OpenOffset;
     }
 
     // Update is called once per frame
@@ -27,16 +27,16 @@ public class DoorScript : MonoBehaviour
         if (componentInParent.gameObject != GameStateManagerScript.Get.Prey.gameObject) return;
         if (other.gameObject.name != "Body") return;
 
-        StartCoroutine(animateRotation(transform.rotation, Quaternion.AngleAxis(ClosedAngle, Vector3.up), TurnTime).GetEnumerator());
+        StartCoroutine(animate(MovingPart.position, MovingPart.position - OpenOffset, CloseTime).GetEnumerator());
 
     }
 
-    IEnumerable<YieldInstruction> animateRotation(Quaternion start, Quaternion end, float time)
+    IEnumerable<YieldInstruction> animate(Vector3 start, Vector3 end, float time)
     {
         var timeLeft = time;
         while (timeLeft > 0)
         {
-            transform.rotation = Quaternion.Lerp(end, start, timeLeft / time);
+            MovingPart.position = Vector3.Lerp(end, start, timeLeft / time);
             yield return null;
             timeLeft -= Time.deltaTime;
         }

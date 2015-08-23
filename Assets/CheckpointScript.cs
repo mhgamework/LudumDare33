@@ -4,17 +4,19 @@ using System.Collections;
 public class CheckpointScript : MonoBehaviour
 {
 
-    public GameStateManagerScript GameStateManager;
+    public GameStateManagerScript GameStateManager { get { return GameStateManagerScript.Get; } }
     private bool visited = false;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnTriggerEnter(Collider other)
     {
