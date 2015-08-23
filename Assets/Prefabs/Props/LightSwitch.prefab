@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 420478}
   - 114: {fileID: 11477054}
+  - 82: {fileID: 8218108}
   m_Layer: 0
   m_Name: LightSwitch
   m_TagString: Untagged
@@ -58,8 +59,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.1749992, y: 1.796, z: 14.5789995}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.04308128e-07}
+  m_LocalPosition: {x: -54.8299942, y: 1.62097287, z: 12.2799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435924}
@@ -176,6 +177,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &8218108
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131550}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a196f4563cfc1e848859394ff9e4b814, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11477054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +261,9 @@ MonoBehaviour:
   OnMaterial: {fileID: 2100000, guid: 03a2e2c6ea3f3c34eaea2b748862c733, type: 2}
   OffMaterial: {fileID: 2100000, guid: 56d84e893524938458db21929cd4cca2, type: 2}
   ButtonRenderer: {fileID: 2396994}
+  lightOnClip: {fileID: 8300000, guid: 31b7d67422da75b4a8dd285e0ac92712, type: 3}
+  lightOffClip: {fileID: 8300000, guid: a196f4563cfc1e848859394ff9e4b814, type: 3}
+  clickAudioSource: {fileID: 8218108}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
