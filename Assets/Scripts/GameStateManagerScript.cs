@@ -14,10 +14,12 @@ public class GameStateManagerScript : MonoBehaviour
     public CheckpointCanvasControl CheckpointCanvas;
     public DeathCanvasControl DeathCanvasControl;
     public DamageCanvasControl DamageCanvasControl;
+    public LostCanvasControl LostCanvasControl;
     public FirstPersonController Player;
     public PreyWalkScript Prey;
 
     public bool isEnded;
+    public bool isLost;
 
     // Use this for initialization
     void Start()
@@ -94,6 +96,8 @@ public class GameStateManagerScript : MonoBehaviour
 
     private void RestoreCheckpoint()
     {
+        isLost = false;
+        isEnded = false;
         Player.transform.position = lastCheckpoint.PlayerPosition;
         Prey.PathProgression = lastCheckpoint.PreyProgress;
         Player.GetComponent<PlayerScript>().health = lastCheckpoint.playerHealth;
@@ -104,5 +108,19 @@ public class GameStateManagerScript : MonoBehaviour
         public Vector3 PlayerPosition;
         public float PreyProgress;
         public float playerHealth;
+    }
+
+    IEnumerable<YieldInstruction> lose()
+    {
+        LostCanvasControl.triggerLose();
+        yield return new WaitForSeconds(LostCanvasControl.fadeDuration + LostCanvasControl.stayDuration);
+        RestoreCheckpoint();
+    }
+
+    public void loseGame()
+    {
+        StartCoroutine(lose().GetEnumerator());
+        isLost = true;
+        Debug.Log("Lost game, prey got away.");
     }
 }

@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public float damageSpeedModifier = 0.5f;
     public float slowDuration = 1;
 
+    public float losingDistance = 100;
+
     private float currentSlowDuration = 0;
 
     [SerializeField] private AudioSource monsterDeath = null;
@@ -27,6 +29,10 @@ public class PlayerScript : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+	    if (Vector3.Distance(GameStateManagerScript.Prey.transform.position, gameObject.transform.position) > losingDistance && !GameStateManagerScript.isLost)
+	    {
+	        GameStateManagerScript.loseGame();
+	    }
 	    if (currentSlowDuration > 0)
 	    {
 	        currentSlowDuration -= Time.deltaTime;
