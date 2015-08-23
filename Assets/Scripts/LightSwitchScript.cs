@@ -1,25 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LightSwitchScript : MonoBehaviour {
+public class LightSwitchScript : MonoBehaviour
+{
 
-    private bool lightOn = false;
     [SerializeField]
-    private GameObject lightCone;
+    private DamagingLightScript light;
+    [SerializeField]
+    private Material OnMaterial;
+    [SerializeField]
+    private Material OffMaterial;
+    [SerializeField]
+    private MeshRenderer ButtonRenderer;
 
-	// Use this for initialization
-	void Start () {
-        lightOn = true;
-        lightCone.SetActive(lightOn);
+    // Use this for initialization
+    void Start()
+    {
     }
-	
-	// Update is called once per frame
-	void Update () {
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
 
     internal void Interact()
     {
-        lightOn = !lightOn;
-        lightCone.SetActive(lightOn);
+        light.IsLightOn = !light.IsLightOn;
+
+        ButtonRenderer.material = light.IsLightOn ? OnMaterial : OffMaterial;
+
     }
 }
