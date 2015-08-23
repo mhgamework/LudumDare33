@@ -10,11 +10,14 @@ public class GameStateManagerScript : MonoBehaviour
 
     public StartGameCanvasControl StartGameCanvas;
     public EndGameCanvasControl EndGameCanvas;
+    public CreditsCanvasControl CreditsCanvasControl;
     public CheckpointCanvasControl CheckpointCanvas;
     public DeathCanvasControl DeathCanvasControl;
     public DamageCanvasControl DamageCanvasControl;
     public FirstPersonController Player;
     public PreyWalkScript Prey;
+
+    public bool isEnded;
 
     // Use this for initialization
     void Start()
@@ -49,12 +52,22 @@ public class GameStateManagerScript : MonoBehaviour
         TakeCheckpoint();
     }
 
+    IEnumerable<YieldInstruction> end()
+    {
+        CreditsCanvasControl.triggerCredits();
+        yield return new WaitForSeconds(creditsDuration);
+        StartGame();
+    }
+
     public void EndGame()
     {
+        isEnded = true;
+        CreditsCanvasControl.triggerCredits();
         Debug.Log("The game has ended.");
     }
 
     private CheckpointData lastCheckpoint;
+    public float creditsDuration;
 
     public void TakeCheckpoint()
     {

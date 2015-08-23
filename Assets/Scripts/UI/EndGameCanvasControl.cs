@@ -32,7 +32,7 @@ public class EndGameCanvasControl : MonoBehaviour
         {
             showEndGameCanvas();
         }
-        if (isVisible && !GameStateManager.Player.GetComponent<PlayerScript>().CanKillPrey())
+        if (isVisible && !GameStateManager.Player.GetComponent<PlayerScript>().CanKillPrey() || GameStateManager.isEnded)
         {
             hideEndGameCanvas();
         }
