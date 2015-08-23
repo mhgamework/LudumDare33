@@ -23,11 +23,15 @@ public class EndGameCanvasControl : MonoBehaviour
     {
         uiFader = this.GetComponent<UIFader>();
         uiFader.Fade(0, 0, EasingFunctions.TYPE.Out);
+
+        GameStateManager.PauseEvent.AddListener(() => { uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.In); });
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!GameStateManager.SimulationEnabled) return;
+
         if (!isVisible && GameStateManager.Player.GetComponent<PlayerScript>().CanKillPrey())
         {
             showEndGameCanvas();

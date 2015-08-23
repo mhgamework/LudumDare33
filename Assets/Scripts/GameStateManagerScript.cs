@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameStateManagerScript : MonoBehaviour
@@ -17,10 +18,24 @@ public class GameStateManagerScript : MonoBehaviour
     public LostCanvasControl LostCanvasControl;
     public FirstPersonController Player;
     public PlayerScript PlayerScript { get { return Player.GetComponent<PlayerScript>(); } }
+    public bool SimulationEnabled { get; private set; }
+
     public PreyWalkScript Prey;
 
     public bool isEnded;
     public bool isLost;
+
+    public class PauseEventHandler : UnityEvent
+    {
+
+    }
+    public class UnPauseEventHandler : UnityEvent
+    {
+
+    }
+
+    public UnPauseEventHandler UnPauseEvent = new UnPauseEventHandler();
+    public PauseEventHandler PauseEvent = new PauseEventHandler();
 
     public Camera PlayerCamera;
 
@@ -33,11 +48,12 @@ public class GameStateManagerScript : MonoBehaviour
 
         if (PlayerCamera != null)
             PlayerCamera.clearStencilAfterLightingPass = true;
+        DisableGameSimulation();
+        StartGameCanvas.Show();
 
-        DisableGame();
-        StartGameCanvas.gameObject.SetActive(true);
+        /*StartGameCanvas.gameObject.SetActive(true);
         EndGameCanvas.gameObject.SetActive(true);
-        CheckpointCanvas.gameObject.SetActive(true);
+        CheckpointCanvas.gameObject.SetActive(true);*/
     }
 
     // Update is called once per frame
@@ -46,19 +62,33 @@ public class GameStateManagerScript : MonoBehaviour
 
     }
 
-    public void DisableGame()
+    public void DisableGameSimulation()
     {
         Player.enabled = false;
         Prey.enabled = false;
+        SimulationEnabled = false;
+        PauseEvent.Invoke();
+        
     }
 
-    public void StartGame()
+    public void EnableGameSimulation()
     {
         Player.enabled = true;
         Prey.enabled = true;
         EndGameCanvas.gameObject.SetActive(true);
         TakeCheckpoint();
-        PlayerScript.SoundScript.PlayDinnerTime();
+
+        SimulationEnabled = true;
+        UnPauseEvent.Invoke();
+
+
+
+    }
+
+    public void StartGame()
+    {
+        throw new NotImplementedException("Is removed! maybe use enablegamesim?");
+
     }
 
     IEnumerable<YieldInstruction> end()

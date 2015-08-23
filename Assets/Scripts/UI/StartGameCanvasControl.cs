@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 
 public class StartGameCanvasControl : MonoBehaviour
@@ -8,9 +9,10 @@ public class StartGameCanvasControl : MonoBehaviour
     [SerializeField]
     private UIFader uiFader;
 
-    private bool isVisible = true;
+    public UIFader textFader;
 
-    private bool gameStarted;
+
+    private bool isVisible = false;
 
     public GameStateManagerScript GameStateManager { get { return GameStateManagerScript.Get; } }
 
@@ -18,35 +20,28 @@ public class StartGameCanvasControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        uiFader = this.GetComponent<UIFader>();
-        uiFader.Fade(1, 0, EasingFunctions.TYPE.In);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerable<YieldInstruction> simulate()
     {
-        if (isVisible)
-        {
-            if (Input.GetKey(KeyCode.S) && !gameStarted)
-            {
-                hideStartGameCanvas();
-                startGame();
-            }
-        }
-    }
-
-    public void startGame()
-    {
-        gameStarted = true;
-        Debug.Log("The game has started.");
-    }
-
-
-    public void hideStartGameCanvas()
-    {
-        uiFader.Fade(0, 0.2f, EasingFunctions.TYPE.Out);
+        textFader.Fade(1, 1, EasingFunctions.TYPE.In);
+        yield return new WaitForSeconds(1);
+        while (!Input.GetKey(KeyCode.S)) yield return null;
+        uiFader.Fade(0, 1f, EasingFunctions.TYPE.Out);
+        GameStateManager.EnableGameSimulation();
+        GameStateManager.PlayerScript.SoundScript.PlayDinnerTime();
         isVisible = false;
 
-        GameStateManager.StartGame();
+    }
+
+    public void Show()
+    {
+        if (isVisible) return;
+        uiFader.Fade(1, 0f, EasingFunctions.TYPE.Out);
+        textFader.Fade(0, 0f, EasingFunctions.TYPE.Out);
+
+        isVisible = true;
+        StartCoroutine(simulate().GetEnumerator());
     }
 }
