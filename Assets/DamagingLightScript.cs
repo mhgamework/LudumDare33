@@ -5,15 +5,17 @@ public class DamagingLightScript : MonoBehaviour {
     private bool isLightOn;
     public GameObject LightObject;
     public DetectPlayerScript DetectPlayerScript;
+    [SerializeField] private AudioSource humm = null;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 
     public bool IsLightOn
@@ -28,10 +30,12 @@ public class DamagingLightScript : MonoBehaviour {
             if (!isLightOn)
             {
                 DetectPlayerScript.DisableLight();
+                humm.Stop();
             }
             else
             {
                 DetectPlayerScript.EnableLight();
+                humm.Play();
             }
         }
     }

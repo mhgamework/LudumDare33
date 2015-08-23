@@ -76,6 +76,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 458754}
   - 114: {fileID: 11418012}
+  - 82: {fileID: 8262074}
   m_Layer: 0
   m_Name: DamagingLight
   m_TagString: Untagged
@@ -129,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.61660004, y: 1.89416504, z: 3.04218817}
+  m_LocalPosition: {x: -51.3800011, y: 5.88999987, z: 13.3699999}
   m_LocalScale: {x: 4.86856461, y: 4.86857033, z: 4.86857033}
   m_Children:
   - {fileID: 419948}
@@ -191,6 +192,75 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 900d879e37431a548a9544ca4c2dbfb9, type: 3}
+--- !u!82 &8262074
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170488}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6aeb1c846cca0a24a928f89c243082ec, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .646000028
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 190
+  DopplerLevel: 1
+  MinDistance: .100000001
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .493999988
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1.10000002
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9534782
 Animator:
   serializedVersion: 3
@@ -253,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightObject: {fileID: 138838}
   DetectPlayerScript: {fileID: 11487528}
+  humm: {fileID: 8262074}
 --- !u!114 &11469752
 MonoBehaviour:
   m_ObjectHideFlags: 1
