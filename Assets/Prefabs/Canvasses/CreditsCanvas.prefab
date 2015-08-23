@@ -28,10 +28,12 @@ GameObject:
   - 223: {fileID: 22390384}
   - 114: {fileID: 11414236}
   - 114: {fileID: 11490642}
-  - 225: {fileID: 22590306}
   - 114: {fileID: 11433914}
   - 114: {fileID: 11450542}
   - 82: {fileID: 8216794}
+  - 225: {fileID: 22562550}
+  - 114: {fileID: 11419406}
+  - 114: {fileID: 11429802}
   m_Layer: 5
   m_Name: CreditsCanvas
   m_TagString: Untagged
@@ -148,6 +150,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11419406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1646048c8552e2f4b88ce5d3c792bc1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11420852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,6 +182,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11429802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60ce38317dafb4dbafb4e7bb8319c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiFader: {fileID: 11419406}
+  textFader: {fileID: 11464056}
+  endSound: {fileID: 8216794}
 --- !u!114 &11433914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,7 +362,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!225 &22590306
+--- !u!225 &22562550
 CanvasGroup:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

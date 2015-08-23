@@ -15,12 +15,23 @@ public class PreyWalkScript : MonoBehaviour
     public float PianoDuration = 2;
 
     private WaypointNodeScript lastVisitedNode;
-    [SerializeField] private AudioSource huh;
+    [SerializeField]
+    private AudioSource huh;
 
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(WalkPath().GetEnumerator());
+        //StartCoroutine(WalkPath().GetEnumerator());
+
+        GameStateManagerScript.Get.PauseEvent.AddListener(() => { StopAllCoroutines(); });
+        GameStateManagerScript.Get.UnPauseEvent.AddListener(() => {
+            {
+                if (EthanAnimator != null)
+                {
+                    EthanAnimator.Play("HumanoidWalk");
+                }
+                StartCoroutine(WalkPath().GetEnumerator());
+            } });
     }
 
     IEnumerable<YieldInstruction> WalkPath()
@@ -72,8 +83,8 @@ public class PreyWalkScript : MonoBehaviour
         }
 
         huh.Play();
-        yield return new WaitForSeconds(0.64f);       
-        
+        yield return new WaitForSeconds(0.64f);
+
 
         var lookDir = GetFromPoint() - GetTargetPoint();
 

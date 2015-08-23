@@ -32,13 +32,18 @@ public class PlayerScript : MonoBehaviour
     public float health = 3;
     private bool isInWater;
 
+    public bool Invincible = false;
+
+
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
+	    if (Input.GetKeyDown(KeyCode.KeypadPlus)) Invincible = !Invincible;
         //Check distance to prey, lose if too far
         distanceToPrey();
         //Set movement speed to water movement speed if in water
@@ -113,6 +118,7 @@ public class PlayerScript : MonoBehaviour
 
     public void takeDamage(float damage)
     {
+        if (Invincible) return;
         health -= damage;
         if (health <= 0)
         {

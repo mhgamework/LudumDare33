@@ -79,7 +79,7 @@ public class GameStateManagerScript : MonoBehaviour
     public void DisableGameSimulation()
     {
         Player.enabled = false;
-        Prey.enabled = false;
+        //Prey.enabled = false;
         SimulationEnabled = false;
         PauseEvent.Invoke();
 
@@ -88,7 +88,7 @@ public class GameStateManagerScript : MonoBehaviour
     public void EnableGameSimulation()
     {
         Player.enabled = true;
-        Prey.enabled = true;
+        //Prey.enabled = true;
         EndGameCanvas.gameObject.SetActive(true);
         TakeCheckpoint();
 
