@@ -16,6 +16,7 @@ public class GameStateManagerScript : MonoBehaviour
     public DamageCanvasControl DamageCanvasControl;
     public LostCanvasControl LostCanvasControl;
     public FirstPersonController Player;
+    public PlayerScript PlayerScript { get { return Player.GetComponent<PlayerScript>(); } }
     public PreyWalkScript Prey;
 
     public bool isEnded;
@@ -57,6 +58,7 @@ public class GameStateManagerScript : MonoBehaviour
         Prey.enabled = true;
         EndGameCanvas.gameObject.SetActive(true);
         TakeCheckpoint();
+        PlayerScript.SoundScript.PlayDinnerTime();
     }
 
     IEnumerable<YieldInstruction> end()
@@ -69,7 +71,9 @@ public class GameStateManagerScript : MonoBehaviour
     public void EndGame()
     {
         isEnded = true;
-        CreditsCanvasControl.triggerCredits();
+        if (CreditsCanvasControl != null)
+            CreditsCanvasControl.triggerCredits();
+        PlayerScript.SoundScript.PlayMonsterChewing();
         Debug.Log("The game has ended.");
     }
 

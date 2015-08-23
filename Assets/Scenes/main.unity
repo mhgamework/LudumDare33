@@ -2083,6 +2083,25 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1316765977}
   m_Script: {fileID: 11500000, guid: 004f94b461f0015438c23829f0d7593f, type: 3}
+--- !u!1 &1367793759 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 164708, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
+  m_PrefabInternal: {fileID: 1823759678}
+--- !u!114 &1367793762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1367793759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0b775d4b07064498540eacbfa7978e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterHurt: {fileID: 8300000, guid: f4afaee44534b294a928ad8acac87cf4, type: 3}
+  DinnerTime: {fileID: 8300000, guid: e92eb9dae282e5045812de71ad0ab522, type: 3}
+  MonsterDeath: {fileID: 8300000, guid: 853eaaf5041a53b419ef23434ec60141, type: 3}
+  MonsterChewing: {fileID: 8300000, guid: 78bce921c2530a347b2df83397b3a011, type: 3}
 --- !u!1 &1385721955 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 97be32bece49f81419edadbbe6132da2, type: 3}
@@ -2414,7 +2433,7 @@ Transform:
   - {fileID: 159275058}
   - {fileID: 1390687904}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1583921100 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1d19d87311b35ff428d16f7d34fdddfe, type: 3}
@@ -2535,6 +2554,79 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 97be32bece49f81419edadbbe6132da2, type: 3}
+--- !u!1 &1632709625 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 170488, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+  m_PrefabInternal: {fileID: 2041464976}
+--- !u!82 &1632709627
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1632709625}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1635381026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,7 +2656,7 @@ Transform:
   - {fileID: 1927027877}
   - {fileID: 169931704}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1001 &1642729781
 Prefab:
   m_ObjectHideFlags: 0
@@ -2914,8 +3006,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487128, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 164708, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
+      propertyPath: m_Name
+      value: MonsterSoundPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400274, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
+      propertyPath: SoundScript
+      value: 
+      objectReference: {fileID: 1367793762}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07db54566d31940459e3e5273582c7b1, type: 2}
   m_IsPrefabParent: 0
@@ -3247,6 +3347,48 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2032125660}
   m_Script: {fileID: 11500000, guid: 0edcf7cd3514059499a41e3dc15e0f03, type: 3}
+--- !u!1001 &2041464976
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -42.1328659
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.72000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 9.904562
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 458754, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 63463f84fd5a66545845acb48b54e9cf, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2084873779 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 842098c49f818414b9aa89a3445aa783, type: 3}

@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
 
     private float currentSlowDuration = 0;
 
-    [SerializeField] private AudioSource monsterDeath = null;
+    public PlayerSoundScript SoundScript;
 
     public float health = 3;
     private bool isInWater;
@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            monsterDeath.Play();
+            SoundScript.PlayMonsterDeath();
             GameStateManagerScript.PlayerDeath();
         }
         currentSlowDuration = slowDuration;

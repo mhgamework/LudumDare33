@@ -24,6 +24,7 @@ public class DoorScript : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         var componentInParent = other.GetComponentInParent<PreyWalkScript>();
+        if (componentInParent == null) return;
         if (componentInParent.gameObject != GameStateManagerScript.Get.Prey.gameObject) return;
         if (other.gameObject.name != "Body") return;
 
