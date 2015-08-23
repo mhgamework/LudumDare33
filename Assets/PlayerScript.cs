@@ -36,4 +36,14 @@ public class PlayerScript : MonoBehaviour
             GameStateManagerScript.PlayerDeath();
         }
     }
+
+    public void OnWaterEnter()
+    {
+        
+    }
+
+    public void OnWaterExit()
+    {
+        
+    }
 }
