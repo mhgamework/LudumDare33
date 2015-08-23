@@ -106,8 +106,11 @@ public class GameStateManagerScript : MonoBehaviour
 
     IEnumerable<YieldInstruction> end()
     {
+        CreditsCanvasControl.FadeToBlack();
+        CreditsCanvasControl.PlayKillSound();
+        yield return new WaitForSeconds(18);
         if (CreditsCanvasControl != null)
-            CreditsCanvasControl.Show();
+            CreditsCanvasControl.ShowCredits();
         yield return new WaitForSeconds(creditsDuration);
         CreditsCanvasControl.Hide();
         yield return new WaitForSeconds(4);

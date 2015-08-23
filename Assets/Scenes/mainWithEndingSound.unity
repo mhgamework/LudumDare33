@@ -1148,51 +1148,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 186250, guid: d8ab3ebb6212a8e49963ffda39ea02eb, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8ab3ebb6212a8e49963ffda39ea02eb, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1466987060 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 186250, guid: d8ab3ebb6212a8e49963ffda39ea02eb, type: 2}
+--- !u!114 &1466987063 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11450542, guid: d8ab3ebb6212a8e49963ffda39ea02eb,
+    type: 2}
   m_PrefabInternal: {fileID: 1466987059}
---- !u!114 &1466987061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1466987060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1646048c8552e2f4b88ce5d3c792bc1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!225 &1466987062
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1466987060}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &1466987063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1466987060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e60ce38317dafb4dbafb4e7bb8319c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiFader: {fileID: 1466987061}
 --- !u!1 &1541488376
 GameObject:
   m_ObjectHideFlags: 0
