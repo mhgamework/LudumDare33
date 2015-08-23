@@ -3730,7 +3730,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 483756, guid: dcb542eb8fe762e4792b0709070e1c34, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.92900002
+      value: 1.00999999
       objectReference: {fileID: 0}
     - target: {fileID: 483756, guid: dcb542eb8fe762e4792b0709070e1c34, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10105,8 +10105,8 @@ MonoBehaviour:
     BobAmount: .100000001
   m_StepInterval: 5
   m_FootstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
 --- !u!1 &2123799154
