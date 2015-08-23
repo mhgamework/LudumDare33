@@ -28,6 +28,7 @@ public class DamageCanvasControl : MonoBehaviour {
 
     IEnumerable<YieldInstruction> fade()
     {
+        GameStateManagerScript.Get.PlayerScript.SoundScript.PlayMonsterHurt();
         uiFader.Fade(1, fadeDuration, EasingFunctions.TYPE.In);
         yield return new WaitForSeconds(fadeDuration + stayDuration);
         uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.Out);
