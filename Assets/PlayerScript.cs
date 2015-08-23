@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -7,6 +8,13 @@ public class PlayerScript : MonoBehaviour
     public GameStateManagerScript GameStateManagerScript;
     public float PreyKillDistance = 5;
     public PreyWalkScript Prey;
+
+    public float defaultWalkingSpeed = 5;
+    public float defaultRunningSped = 10;
+    public float damageSpeedModifier = 0.5f;
+    public float slowDuration = 1;
+
+    private float currentSlowDuration = 0;
 
     [SerializeField] private AudioSource monsterDeath = null;
 
@@ -19,6 +27,19 @@ public class PlayerScript : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+	    if (currentSlowDuration > 0)
+	    {
+	        currentSlowDuration -= Time.deltaTime;
+            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped *
+	                                                           damageSpeedModifier;
+            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed *
+	                                                            damageSpeedModifier;
+	    }
+	    else
+	    {
+            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped;
+            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed;
+	    }
 	}
 
     public bool CanKillPrey()
@@ -35,6 +56,7 @@ public class PlayerScript : MonoBehaviour
             monsterDeath.Play();
             GameStateManagerScript.PlayerDeath();
         }
+        currentSlowDuration = slowDuration;
     }
 
     public void OnWaterEnter()
