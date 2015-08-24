@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11421672}
   - 114: {fileID: 11459888}
   - 114: {fileID: 11400486}
+  - 114: {fileID: 11405650}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -68,6 +69,7 @@ GameObject:
   - 82: {fileID: 8253342}
   - 114: {fileID: 11448412}
   - 114: {fileID: 11434960}
+  - 114: {fileID: 11491620}
   m_Layer: 0
   m_Name: MonsterSoundPlayer
   m_TagString: Untagged
@@ -81,8 +83,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .800000012, z: 0}
+  m_LocalRotation: {x: -5.17851257e-12, y: -.0450892858, z: -2.69583347e-14, w: -.998983026}
+  m_LocalPosition: {x: -4.12640147e-16, y: .799999952, z: -4.87890978e-18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 487128}
@@ -117,8 +119,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159746}
-  m_LocalRotation: {x: -1.34732503e-13, y: .00282810628, z: 5.742554e-11, w: .999996006}
-  m_LocalPosition: {x: 32.4000015, y: 1.07000005, z: -157.912003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.13499999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416676}
@@ -158,7 +160,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
-  m_StereoMirrorMode: 0
 --- !u!54 &5475224
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -407,7 +408,7 @@ MonoBehaviour:
   slowDuration: 1
   healthRegenRatio: 0
   losingDistance: 100
-  SoundScript: {fileID: 11434960}
+  SoundScript: {fileID: 11491620}
   drySteps:
   - {fileID: 8300000, guid: af47e6c36fe912f46bb87fb4c7af37de, type: 3}
   - {fileID: 8300000, guid: f4403c06858124d4dad83d092ac17af6, type: 3}
@@ -423,6 +424,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6a7486dea3e2e5f4b86c2bc80eb8d00a, type: 3}
   - {fileID: 8300000, guid: 0b65763b4a3e165428794a1aa37a1d94, type: 3}
   health: 3
+  Invincible: 0
 --- !u!114 &11400486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,9 +440,30 @@ MonoBehaviour:
   useRadialDistance: 0
   heightFog: 1
   height: 1
-  heightDensity: 6.0999999
+  heightDensity: 4.5
   startDistance: 0
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
+--- !u!114 &11405650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f524cac4f2747b4fb11c694dd9b39b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lensFlareType: 2
+  saturation: -.0900000036
+  threshold: .0799999982
+  flareIntensity: 5
+  bloomIntensity: 2
+  iterations: 10
+  blurSpread: .600000024
+  downsample: 6
+  useDirt: 1
+  screenDirt: {fileID: 2800000, guid: d19849d0639712d4c9fc579a097e5028, type: 3}
 --- !u!114 &11421672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +645,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RaycastDistance: 2
+--- !u!114 &11491620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0b775d4b07064498540eacbfa7978e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterHurt: {fileID: 8300000, guid: f4afaee44534b294a928ad8acac87cf4, type: 3}
+  DinnerTime: {fileID: 8300000, guid: e92eb9dae282e5045812de71ad0ab522, type: 3}
+  MonsterDeath: {fileID: 8300000, guid: 853eaaf5041a53b419ef23434ec60141, type: 3}
+  MonsterChewing: {fileID: 8300000, guid: 78bce921c2530a347b2df83397b3a011, type: 3}
 --- !u!143 &14319606
 CharacterController:
   m_ObjectHideFlags: 1
