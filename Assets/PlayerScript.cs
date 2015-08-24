@@ -6,7 +6,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
-    private BoxCollider KillAreaBox = null;
+    private UIFader DistanceWarningUI = null;
 
     public GameStateManagerScript GameStateManagerScript { get { return GameStateManagerScript.Get; } }
     public float PreyKillDistance = 5;
@@ -42,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     public bool Invincible = false;
 
     private bool PreyHasEnteredKillZone;
+    private bool ShowingWarningUi;
 
     // Use this for initialization
     void Start()
@@ -51,14 +52,16 @@ public class PlayerScript : MonoBehaviour
             KillArea.OnKillAreaEntered = new KillAreaTrigger.OnKillAreaEnteredEventHandler();
             KillArea.OnKillAreaEntered.AddListener(() => PreyHasEnteredKillZone = true);
         }
+
+        StartCoroutine("UpdateCheckPreyDistance");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadPlus)) Invincible = !Invincible;
-        //Check distance to prey, lose if too far
-        distanceToPrey();
+        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+            Invincible = !Invincible;
+
         //Set movement speed to water movement speed if in water
         waterDebuff();
         //Slow debuff from taking damage, water ignores this.
@@ -115,15 +118,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void distanceToPrey()
-    {
-        if (Vector3.Distance(GameStateManagerScript.Prey.transform.position, gameObject.transform.position) > losingDistance &&
-            !GameStateManagerScript.isLost)
-        {
-            GameStateManagerScript.loseGame();
-        }
-    }
-
     public bool CanKillPrey()
     {
         if (KillArea != null && !PreyHasEnteredKillZone)
@@ -155,5 +149,63 @@ public class PlayerScript : MonoBehaviour
         isInWater = false;
         currentSlowDuration = slowDuration;
         GetComponent<FirstPersonController>().m_FootstepSounds = drySteps.ToArray();
+    }
+
+    private IEnumerator UpdateCheckPreyDistance()
+    {
+        while (true)
+        {
+            var distance_to_prey = Vector3.Distance(GameStateManagerScript.Prey.transform.position, gameObject.transform.position);
+
+            //Check distance to prey, lose if too far
+            if (distance_to_prey > losingDistance && !GameStateManagerScript.isLost)
+            {
+                StopCoroutine("FlashWarningUi");
+                ShowingWarningUi = false;
+                if (DistanceWarningUI != null)
+                    DistanceWarningUI.Fade(0, 0f);
+
+                GameStateManagerScript.loseGame();
+            }
+
+            if (distance_to_prey > losingDistance * 0.5f)
+            {
+                if (!ShowingWarningUi)
+                {
+                    StartCoroutine("FlashWarningUi");
+                    ShowingWarningUi = true;
+                }
+            }
+            else
+            {
+                StopCoroutine("FlashWarningUi");
+                ShowingWarningUi = false;
+                if (DistanceWarningUI != null)
+                    DistanceWarningUI.Fade(0, 0);
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator FlashWarningUi()
+    {
+        if (DistanceWarningUI == null)
+            yield break;
+
+        float min_flash_duration = 0.1f;
+        float max_flash_duration = 2f;
+
+        DistanceWarningUI.Fade(0, 0);
+        float to_alpha = 1f;
+        while (true)
+        {
+            var prey_distance = Vector3.Distance(GameStateManagerScript.Prey.transform.position, gameObject.transform.position);
+            var flash_duration = Mathf.Lerp(min_flash_duration, max_flash_duration, 1f - prey_distance / losingDistance);
+
+            DistanceWarningUI.Fade(to_alpha, flash_duration);
+            yield return new WaitForSeconds(flash_duration);
+            to_alpha = to_alpha == 0 ? 1 : 0;
+        }
     }
 }
