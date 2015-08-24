@@ -271,11 +271,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451424, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_Text
-      value: A Challenge
+      value: Dessert
       objectReference: {fileID: 0}
     - target: {fileID: 11429998, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401474, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ede6a04f43af8d1489698ad6253fc2d7,
+        type: 3}
+    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451424, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
@@ -1658,28 +1679,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451424, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_Text
-      value: Tutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 11429998, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
-      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Tutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 11401474, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ea619c4dfabce754bbf2351ecd5c18aa,
-        type: 3}
-    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
-      propertyPath: m_Color.b
-      value: 1
+      value: 'The Appetizer
+
+        (Tutorial)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
@@ -6378,13 +6380,29 @@ Prefab:
       objectReference: {fileID: 1397115807}
     - target: {fileID: 11451424, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_Text
-      value: Level 1
+      value: Main Course
       objectReference: {fileID: 0}
     - target: {fileID: 11401474, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 73cee75a5945548458d3c60c03d076a6,
         type: 3}
+    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445440, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451424, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
   m_IsPrefabParent: 0
@@ -7197,7 +7215,7 @@ GameObject:
   - 114: {fileID: 1467913245}
   - 114: {fileID: 1467913244}
   m_Layer: 5
-  m_Name: Button Canvas
+  m_Name: Level Button Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7997,7 +8015,7 @@ Transform:
   m_PrefabParentObject: {fileID: 423902, guid: 43ffb45602a9aba409cbdcee9813d360, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1643407094}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8077,31 +8095,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .580599487
+      value: .433351815
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .814129174
+      value: .901224852
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -65.8351517
+      value: -48.970253
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5.68139601
+      value: -.0795950815
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -41.5291824
+      value: -31.043644
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.00805933215
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 452428, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .00574651919
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2070548, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_TargetTexture
@@ -8418,7 +8436,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 150, y: 150}
-  m_Spacing: {x: 10, y: 50}
+  m_Spacing: {x: 10, y: 60}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!114 &1712429031
@@ -9178,7 +9196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22495434, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -275
+      value: -285
       objectReference: {fileID: 0}
     - target: {fileID: 22495434, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_SizeDelta.x
@@ -9223,6 +9241,15 @@ Prefab:
     - target: {fileID: 11451424, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
       propertyPath: m_Text
       value: Dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401474, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4f1fee3de32377429fd1348fae62b10,
+        type: 3}
+    - target: {fileID: 11401474, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79c13c6f170fb264494c0ef7212fbe4b, type: 2}
