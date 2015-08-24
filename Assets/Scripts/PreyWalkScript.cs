@@ -39,6 +39,18 @@ public class PreyWalkScript : MonoBehaviour
         });
     }
 
+    void Update()
+    {
+        if (Mathf.FloorToInt(PathProgression + 1) - Path.transform.childCount >= 0)
+        {
+            StopAllCoroutines();
+            if (EthanAnimator != null)
+            {
+                EthanAnimator.Play("HumanoidIdle");
+            }
+        }
+    }
+
     IEnumerable<YieldInstruction> WalkPath()
     {
 
