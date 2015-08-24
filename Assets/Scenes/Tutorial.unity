@@ -1727,6 +1727,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11418246, guid: a34a711b62beb404fbf399a73770f597, type: 2}
+      propertyPath: GoToLevelSelect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a34a711b62beb404fbf399a73770f597, type: 2}
   m_IsPrefabParent: 0
@@ -2717,31 +2721,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.0392118208
+      value: -5.15502788e-12
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .960451543
+      value: .0450892895
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .207125574
+      value: 4.93364681e-13
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .181918442
+      value: .998982966
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.73359585
+      value: -4.12640147e-16
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.66907072
+      value: 4.44701195
       objectReference: {fileID: 0}
     - target: {fileID: 458886, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 20.4315224
+      value: -7.42999983
       objectReference: {fileID: 0}
     - target: {fileID: 182080, guid: dccc9a4373144c04e9bd044c1273990a, type: 2}
       propertyPath: m_StaticEditorFlags

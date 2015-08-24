@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EscapeQuitter : MonoBehaviour
 {
-    // Update is called once per frame
+    [SerializeField]
+    private bool GoToLevelSelect;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -12,6 +15,9 @@ public class EscapeQuitter : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        if (GoToLevelSelect)
+            Application.LoadLevel("TitleScene");
+        else
+            Application.Quit();
     }
 }
