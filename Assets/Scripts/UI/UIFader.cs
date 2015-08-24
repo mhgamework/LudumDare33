@@ -13,6 +13,7 @@ public class UIFader : MonoBehaviour
 
     public void Fade(float target_alpha, float time, EasingFunctions.TYPE easing_type = EasingFunctions.TYPE.Regular)
     {
+        this.gameObject.SetActive(true);
         StopCoroutine("UpdateFade");
 
         object[] args = new object[] { target_alpha, time, easing_type };

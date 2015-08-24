@@ -81,7 +81,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (isInWater)
         {
-            print("applying water debuff.");
+            //print("applying water debuff.");
 
             GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped*
                                                                waterSpeedModifier;

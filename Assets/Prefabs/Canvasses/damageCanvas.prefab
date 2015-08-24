@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &134970
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +31,7 @@ GameObject:
   - 114: {fileID: 11490152}
   - 225: {fileID: 22589880}
   - 114: {fileID: 11481940}
+  - 114: {fileID: 11455926}
   m_Layer: 5
   m_Name: damageCanvas
   m_TagString: Untagged
@@ -59,6 +60,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11455926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259bd3651b08b16438443a294cd82ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToEnable: {fileID: 132148}
 --- !u!114 &11462030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +134,7 @@ MonoBehaviour:
   uiFader: {fileID: 11481940}
   fadeDuration: .100000001
   stayDuration: .100000001
+  showPermanent: 0
 --- !u!222 &22237484
 CanvasRenderer:
   m_ObjectHideFlags: 1
