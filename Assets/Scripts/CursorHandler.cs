@@ -10,16 +10,12 @@ public class CursorHandler : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = CursorVisible;
-        Cursor.lockState = LockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        Cursor.visible = CursorVisible;
+        Cursor.lockState = LockCursor ? CursorLockMode.Locked : CursorLockMode.None;
     }
 }
