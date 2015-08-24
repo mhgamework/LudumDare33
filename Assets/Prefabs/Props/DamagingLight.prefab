@@ -130,8 +130,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.5300007, y: 5.69000006, z: 36.0699997}
-  m_LocalScale: {x: 4.86856461, y: 4.86857033, z: 4.86857033}
+  m_LocalPosition: {x: 2.73000002, y: 5.57000017, z: 45.4000015}
+  m_LocalScale: {x: 2.05900407, y: 2.05900645, z: 2.05900645}
   m_Children:
   - {fileID: 419948}
   m_Father: {fileID: 0}
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Eye: {fileID: 122734}
-  DamageMultiplier: 1
+  DamageMultiplier: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

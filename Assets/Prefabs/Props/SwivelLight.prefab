@@ -130,8 +130,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131362}
-  m_LocalRotation: {x: .136991218, y: -.407849371, z: .0620398335, w: .900579453}
-  m_LocalPosition: {x: 11.0760002, y: 12.5500002, z: 68.6460037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15, y: 6, z: 26}
   m_LocalScale: {x: .932399988, y: .932400048, z: .932400048}
   m_Children:
   - {fileID: 498392}
@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thingToSwivel: {fileID: 155146}
-  swivelStartPosition: -10
-  swivelEndPosition: 10
+  swivelStartPosition: -30
+  swivelEndPosition: 30
   swivelSpeed: 10
 --- !u!114 &11465988
 MonoBehaviour:
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Eye: {fileID: 126712}
-  DamageMultiplier: 1
+  DamageMultiplier: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
