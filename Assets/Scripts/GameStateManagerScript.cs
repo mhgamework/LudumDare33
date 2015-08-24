@@ -187,6 +187,8 @@ public class GameStateManagerScript : MonoBehaviour
         isEnded = false;
         Player.transform.position = lastCheckpoint.PlayerPosition;
         Prey.PathProgression = lastCheckpoint.PreyProgress;
+        Prey.updateOrientationUsingPathProgression();
+        Player.transform.rotation = Quaternion.LookRotation(Prey.transform.position - Player.transform.position);
         Player.GetComponent<PlayerScript>().health = lastCheckpoint.playerHealth;
     }
 

@@ -201,7 +201,7 @@ public class PreyWalkScript : MonoBehaviour
         return path.transform.GetChild(startIndex).GetComponent<WaypointNodeScript>();
     }
 
-    private void updateOrientationUsingPathProgression()
+    public void updateOrientationUsingPathProgression()
     {
         var prevPos = transform.position;
         var prevRot = transform.rotation;
