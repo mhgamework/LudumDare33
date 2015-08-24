@@ -7,6 +7,9 @@ public class PreyWalkScript : MonoBehaviour
     [SerializeField]
     private Animator EthanAnimator = null;
 
+    [SerializeField]
+    private Cloth ClothComponent = null;
+
     public WaypointPathScript Path;
 
     public float PathProgression;
@@ -24,14 +27,16 @@ public class PreyWalkScript : MonoBehaviour
         //StartCoroutine(WalkPath().GetEnumerator());
 
         GameStateManagerScript.Get.PauseEvent.AddListener(() => { StopAllCoroutines(); });
-        GameStateManagerScript.Get.UnPauseEvent.AddListener(() => {
+        GameStateManagerScript.Get.UnPauseEvent.AddListener(() =>
+        {
             {
                 if (EthanAnimator != null)
                 {
                     EthanAnimator.Play("HumanoidWalk");
                 }
                 StartCoroutine(WalkPath().GetEnumerator());
-            } });
+            }
+        });
     }
 
     IEnumerable<YieldInstruction> WalkPath()
@@ -184,18 +189,22 @@ public class PreyWalkScript : MonoBehaviour
         return path.transform.GetChild(startIndex).GetComponent<WaypointNodeScript>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void updateOrientationUsingPathProgression()
     {
         var prevPos = transform.position;
-        transform.position = GetPointOnPathSafe(Path, PathProgression);
+        var prevRot = transform.rotation;
 
-        transform.rotation = Quaternion.LookRotation(Vector3.Normalize(transform.position - prevPos), Vector3.up);
+        var newPos = GetPointOnPathSafe(Path, PathProgression);
+        
+        var newRot = Quaternion.LookRotation(Vector3.Normalize(newPos - prevPos), Vector3.up);
+
+        if (Vector3.Distance(prevPos, newPos) > 0.5f || Quaternion.Angle(prevRot, newRot) > 20f)
+            TeleportPrey(newPos, newRot);
+        else
+        {
+            transform.position = newPos;
+            transform.rotation = newRot;
+        }
     }
 
     public bool isValidPathProgression(GameObject path, float offset)
@@ -210,5 +219,13 @@ public class PreyWalkScript : MonoBehaviour
         if (endIndex >= path.transform.childCount) return false;
 
         return true;
+    }
+
+    public void TeleportPrey(Vector3 new_position, Quaternion new_rotation)
+    {
+        if (ClothComponent != null)
+            ClothComponent.ClearTransformMotion();
+        transform.position = new_position;
+        transform.rotation = new_rotation;
     }
 }
