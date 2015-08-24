@@ -5,6 +5,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField]
+    private BoxCollider KillAreaBox = null;
 
     public GameStateManagerScript GameStateManagerScript { get { return GameStateManagerScript.Get; } }
     public float PreyKillDistance = 5;
@@ -26,33 +28,44 @@ public class PlayerScript : MonoBehaviour
 
     public PlayerSoundScript SoundScript;
 
-    [SerializeField] private List<AudioClip> drySteps = new List<AudioClip>();
-    [SerializeField] private List<AudioClip> wetSteps = new List<AudioClip>();
+    [SerializeField]
+    private List<AudioClip> drySteps = new List<AudioClip>();
+    [SerializeField]
+    private List<AudioClip> wetSteps = new List<AudioClip>();
+
+    [SerializeField]
+    private KillAreaTrigger KillArea = null;
 
     public float health = 3;
     private bool isInWater;
 
     public bool Invincible = false;
 
+    private bool PreyHasEnteredKillZone;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	    if (Input.GetKeyDown(KeyCode.KeypadPlus)) Invincible = !Invincible;
+    // Use this for initialization
+    void Start()
+    {
+        if (KillArea != null)
+        {
+            KillArea.OnKillAreaEntered = new KillAreaTrigger.OnKillAreaEnteredEventHandler();
+            KillArea.OnKillAreaEntered.AddListener(() => PreyHasEnteredKillZone = true);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadPlus)) Invincible = !Invincible;
         //Check distance to prey, lose if too far
         distanceToPrey();
         //Set movement speed to water movement speed if in water
-	    waterDebuff();
+        waterDebuff();
         //Slow debuff from taking damage, water ignores this.
-	    slowDebuff();
+        slowDebuff();
         //Regen health if out of slow
         healthRegen();
-	}
+    }
 
     private void slowDebuff()
     {
@@ -83,9 +96,9 @@ public class PlayerScript : MonoBehaviour
         {
             //print("applying water debuff.");
 
-            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped*
+            GetComponent<FirstPersonController>().m_RunSpeed = defaultRunningSped *
                                                                waterSpeedModifier;
-            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed*
+            GetComponent<FirstPersonController>().m_WalkSpeed = defaultWalkingSpeed *
                                                                 waterSpeedModifier;
         }
     }
@@ -94,7 +107,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (health < 3 && currentSlowDuration <= 0)
         {
-            health += healthRegenRatio*Time.deltaTime;
+            health += healthRegenRatio * Time.deltaTime;
             if (health > 3)
             {
                 health = 3;
@@ -113,6 +126,9 @@ public class PlayerScript : MonoBehaviour
 
     public bool CanKillPrey()
     {
+        if (KillArea != null && !PreyHasEnteredKillZone)
+            return false;
+
         return (Prey.transform.position - transform.position).magnitude < PreyKillDistance;
     }
 

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
-
 [CustomEditor(typeof(DirtyLensFlare))] 
 public class DirtyLensFlareEditor : Editor  {
 	
