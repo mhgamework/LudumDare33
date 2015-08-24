@@ -90,13 +90,10 @@ public class GameStateManagerScript : MonoBehaviour
         Player.enabled = true;
         //Prey.enabled = true;
         EndGameCanvas.gameObject.SetActive(true);
-        TakeCheckpoint();
+        TakeCheckpoint(null);
 
         SimulationEnabled = true;
         UnPauseEvent.Invoke();
-
-
-
     }
 
     public void StartGame()
@@ -119,28 +116,42 @@ public class GameStateManagerScript : MonoBehaviour
 
     public void EndGame()
     {
-        //TODO: fix this
         DisableGameSimulation();
         isEnded = true;
 
         StartCoroutine(end().GetEnumerator());
-
-
-
-
     }
 
     private CheckpointData lastCheckpoint;
     public float creditsDuration;
 
-    public void TakeCheckpoint()
+    public void TakeCheckpoint(GameObject waypoint_to_restore)
     {
+        int waypointIndex = GetWayPointIndex(waypoint_to_restore);
+        int preyprogress = waypointIndex != -1 ? waypointIndex : Mathf.FloorToInt(Prey.PathProgression);
+
         lastCheckpoint = new CheckpointData()
         {
             PlayerPosition = Player.transform.position,
-            PreyProgress = Prey.PathProgression,
+            PreyProgress = preyprogress,
             playerHealth = Player.GetComponent<PlayerScript>().health
         };
+    }
+
+    private int GetWayPointIndex(GameObject waypoint)
+    {
+        if (waypoint == null)
+            return -1;
+
+        var waypoint_transform = waypoint.GetComponent<Transform>();
+        var parent = waypoint_transform.parent;
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            if (parent.GetChild(i) == waypoint_transform)
+                return i;
+        }
+        return -1;
     }
 
     IEnumerable<YieldInstruction> die()

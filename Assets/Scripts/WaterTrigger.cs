@@ -17,7 +17,7 @@ public class WaterTrigger : MonoBehaviour
         if(other.GetComponentInParent<PlayerScript>() == null)
             return;
 
-        Debug.Log("(WATERTRIGGER) enter");
+        //Debug.Log("(WATERTRIGGER) enter");
         if (GameStateManagerScript.Get != null)
             GameStateManagerScript.Get.Player.GetComponent<PlayerScript>().OnWaterEnter();
     }
@@ -27,7 +27,7 @@ public class WaterTrigger : MonoBehaviour
         if (other.GetComponentInParent<PlayerScript>() == null)
             return;
 
-        Debug.Log("(WATERTRIGGER) exit");
+        //Debug.Log("(WATERTRIGGER) exit");
         if (GameStateManagerScript.Get != null)
             GameStateManagerScript.Get.Player.GetComponent<PlayerScript>().OnWaterExit();
     }

@@ -1480,6 +1480,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11455536, guid: 42142836c82d34b40859c5e5f570bf60, type: 2}
+      propertyPath: WayPointToRestore
+      value: 
+      objectReference: {fileID: 1295789968}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42142836c82d34b40859c5e5f570bf60, type: 2}
   m_IsPrefabParent: 0
@@ -8753,6 +8757,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcb542eb8fe762e4792b0709070e1c34, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1295789968 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 177472, guid: 74cbaac782ce0334fa219b299ea247d4, type: 2}
+  m_PrefabInternal: {fileID: 217458023}
 --- !u!4 &1296695261 stripped
 Transform:
   m_PrefabParentObject: {fileID: 411886, guid: 74cbaac782ce0334fa219b299ea247d4, type: 2}

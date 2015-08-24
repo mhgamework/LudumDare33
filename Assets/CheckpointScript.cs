@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CheckpointScript : MonoBehaviour
 {
+    public GameObject WayPointToRestore = null;
 
     public GameStateManagerScript GameStateManager { get { return GameStateManagerScript.Get; } }
     private bool visited = false;
@@ -23,7 +24,7 @@ public class CheckpointScript : MonoBehaviour
         if (other.gameObject != GameStateManager.Player.gameObject) return;
         if (visited) return;
         visited = true;
-        GameStateManager.TakeCheckpoint();
+        GameStateManager.TakeCheckpoint(WayPointToRestore);
         GameStateManager.CheckpointCanvas.HitCheckpoint();
         GetComponent<AudioSource>().Play();
     }
