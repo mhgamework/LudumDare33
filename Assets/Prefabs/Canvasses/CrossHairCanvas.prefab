@@ -11,6 +11,7 @@ GameObject:
   - 223: {fileID: 22327826}
   - 114: {fileID: 11439910}
   - 114: {fileID: 11470744}
+  - 114: {fileID: 11481722}
   m_Layer: 5
   m_Name: CrossHairCanvas
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -93,6 +94,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11481722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f7c56aa26ed964d8e5dec9ce1d639b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &22275518
 CanvasRenderer:
   m_ObjectHideFlags: 1

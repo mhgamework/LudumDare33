@@ -52,7 +52,7 @@ public class DetectPlayerScript : MonoBehaviour
 
         if (!Physics.Raycast(ray, out hitInfo)) throw new InvalidOperationException();
 
-        if (hitInfo.collider != other)
+        if (!hitInfo.collider.isTrigger && hitInfo.collider != other)
             return; // very well hidden sir
 
         countingCollider = other;
