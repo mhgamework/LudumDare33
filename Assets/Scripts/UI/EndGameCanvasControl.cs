@@ -2,9 +2,12 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Helpers;
+using Assets.Scripts.GameStates;
+using Assets.Scripts.GameSystems;
 using UnityEngine.Events;
 
-public class EndGameCanvasControl : MonoBehaviour
+public class EndGameCanvasControl : MonoBehaviour,IPausable
 {
     [SerializeField]
     private UIFader uiFader;
@@ -23,13 +26,12 @@ public class EndGameCanvasControl : MonoBehaviour
         uiFader = this.GetComponent<UIFader>();
         uiFader.Fade(0, 0, EasingFunctions.TYPE.Out);
 
-        GameStateManager.PauseEvent.AddListener(() => { uiFader.Fade(0, fadeDuration, EasingFunctions.TYPE.In); });
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameStateManager.SimulationEnabled) return;
+        
 
         if (!isVisible && GameStateManager.Player.GetComponent<PlayerScript>().CanKillPrey())
         {
@@ -43,7 +45,8 @@ public class EndGameCanvasControl : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.F))// && !gameEnded)
             {
-                GameStateManager.EndGame();
+                this.GetSingleton<GameStateScript>().ChangeState(this.GetSingleton<EatPrayStateScript>());
+                //GameStateManager.EndGame();
                 //gameEnded = true; // TODO
             }
         }
@@ -75,4 +78,14 @@ public class EndGameCanvasControl : MonoBehaviour
         StartCoroutine(fade().GetEnumerator());
     }
 
+    public void Pause()
+    {
+        uiFader.Fade(0, 0, EasingFunctions.TYPE.In);
+        enabled = false;
+    }
+
+    public void Unpause()
+    {
+        enabled = true;
+    }
 }

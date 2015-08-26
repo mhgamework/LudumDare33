@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Helpers;
+using Assets.Scripts.GameStates;
+using Assets.Scripts.GameSystems;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerScript : MonoBehaviour
@@ -44,9 +47,14 @@ public class PlayerScript : MonoBehaviour
     private bool PreyHasEnteredKillZone;
     private bool ShowingWarningUi;
 
+    private GameStateScript gameStateScript;
+    private BurnedGameStateScript burnedState;
+
     // Use this for initialization
     void Start()
     {
+        gameStateScript = this.GetSingleton<GameStateScript>();
+        burnedState = this.GetSingleton<BurnedGameStateScript>();
         if (KillArea != null)
         {
             KillArea.OnKillAreaEntered = new KillAreaTrigger.OnKillAreaEnteredEventHandler();
@@ -133,7 +141,8 @@ public class PlayerScript : MonoBehaviour
         if (health <= 0)
         {
             // Check death
-            GameStateManagerScript.PlayerDeath();
+            this.GetSingleton<GameStateScript>().ChangeState(this.GetSingleton<BurnedGameStateScript>());
+            
         }
         currentSlowDuration = slowDuration;
     }
@@ -165,7 +174,7 @@ public class PlayerScript : MonoBehaviour
                 if (DistanceWarningUI != null)
                     DistanceWarningUI.Fade(0, 0f);
 
-                GameStateManagerScript.loseGame();
+                this.GetSingleton<GameStateScript>().ChangeState(this.GetSingleton<PreyGotAwayStateScript>());
             }
 
             if (distance_to_prey > losingDistance * 0.5f)

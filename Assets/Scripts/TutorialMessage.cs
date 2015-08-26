@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.GameSystems;
 
 [RequireComponent(typeof(BoxCollider))]
-public class TutorialMessage : MonoBehaviour
+public class TutorialMessage : MonoBehaviour,IPausable
 {
     private BoxCollider collider;
 
@@ -12,6 +13,7 @@ public class TutorialMessage : MonoBehaviour
     private UIFader TutorialMessageToShow = null;
 
     private bool tutorialFired;
+    private bool simulationEnabled = false;
     private GameStateManagerScript GameStateManager { get { return GameStateManagerScript.Get; } }
 
     void Start()
@@ -31,7 +33,7 @@ public class TutorialMessage : MonoBehaviour
 
     IEnumerator ShowTutorial()
     {
-        while (!GameStateManager.SimulationEnabled)
+        while (!simulationEnabled)
         {
             yield return null;
         }
@@ -39,5 +41,15 @@ public class TutorialMessage : MonoBehaviour
         TutorialMessageToShow.Fade(1, 0.5f, EasingFunctions.TYPE.In);
         yield return new WaitForSeconds(ShowTime);
         TutorialMessageToShow.Fade(0, 0.5f, EasingFunctions.TYPE.Out);
+    }
+
+    public void Pause()
+    {
+        simulationEnabled = false;
+    }
+
+    public void Unpause()
+    {
+        simulationEnabled = true;
     }
 }

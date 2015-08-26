@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.GameSystems;
 
 public class CheckpointScript : MonoBehaviour
 {
@@ -24,8 +25,9 @@ public class CheckpointScript : MonoBehaviour
         if (other.gameObject != GameStateManager.Player.gameObject) return;
         if (visited) return;
         visited = true;
-        GameStateManager.TakeCheckpoint(WayPointToRestore);
-        GameStateManager.CheckpointCanvas.HitCheckpoint();
+        CheckpointingScript.Get.MakeCheckpoint();
+        //GameStateManager.TakeCheckpoint(WayPointToRestore);
+        //GameStateManager.CheckpointCanvas.HitCheckpoint();
         GetComponent<AudioSource>().Play();
     }
 }

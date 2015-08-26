@@ -10,33 +10,33 @@ public class GameStateManagerScript : MonoBehaviour
 {
     public static GameStateManagerScript Get { get; private set; }
 
-    public StartGameStateScript StartGameCanvas;
-    public EndGameCanvasControl EndGameCanvas;
-    public EatPrayStateScript CreditsCanvasControl;
-    public CheckpointCanvasControl CheckpointCanvas;
-    public BurnedGameStateScript DeathCanvasControl;
-    public DamageCanvasControl DamageCanvasControl;
-    public PreyGotAwayStateScript PreyGotAwayStateScript;
+    //public StartGameStateScript StartGameCanvas;
+    //public EndGameCanvasControl EndGameCanvas;
+    //public EatPrayStateScript CreditsCanvasControl;
+    //public CheckpointCanvasControl CheckpointCanvas;
+    //public BurnedGameStateScript DeathCanvasControl;
+    //public DamageCanvasControl DamageCanvasControl;
+    //public PreyGotAwayStateScript PreyGotAwayStateScript;
     public FirstPersonController Player;
     public PlayerScript PlayerScript { get { return Player.GetComponent<PlayerScript>(); } }
-    public bool SimulationEnabled { get; private set; }
+    //public bool SimulationEnabled { get; private set; }
 
     public PreyWalkScript Prey;
 
     public bool isEnded;
     public bool isLost;
 
-    public class PauseEventHandler : UnityEvent
+    /*public class PauseEventHandler : UnityEvent
     {
 
     }
     public class UnPauseEventHandler : UnityEvent
     {
 
-    }
+    }*/
 
-    public UnPauseEventHandler UnPauseEvent = new UnPauseEventHandler();
-    public PauseEventHandler PauseEvent = new PauseEventHandler();
+    /*public UnPauseEventHandler UnPauseEvent = new UnPauseEventHandler();
+    public PauseEventHandler PauseEvent = new PauseEventHandler();*/
 
     public GameStateManagerScript()
     {
@@ -55,8 +55,8 @@ public class GameStateManagerScript : MonoBehaviour
 
         if (PlayerCamera != null)
             PlayerCamera.clearStencilAfterLightingPass = true;
-        DisableGameSimulation();
-        StartGameCanvas.Show();
+        //DisableGameSimulation();
+        //StartGameCanvas.Show();
 
 
         /*StartGameCanvas.gameObject.SetActive(true);
@@ -71,13 +71,13 @@ public class GameStateManagerScript : MonoBehaviour
     {
         if (firstFrame)
         {
-            DisableGameSimulation();
-            StartGameCanvas.Show();
+            //DisableGameSimulation();
+            //StartGameCanvas.Show();
             firstFrame = false;
         }
     }
 
-    public void DisableGameSimulation()
+  /*  public void DisableGameSimulation()
     {
         Player.enabled = false;
         //Prey.enabled = false;
@@ -95,14 +95,14 @@ public class GameStateManagerScript : MonoBehaviour
 
         SimulationEnabled = true;
         UnPauseEvent.Invoke();
-    }
+    }*/
 
     public void StartGame()
     {
         Application.LoadLevel("TitleScene");
     }
 
-    IEnumerable<YieldInstruction> end()
+  /*  IEnumerable<YieldInstruction> end()
     {
         CreditsCanvasControl.FadeToBlack();
         CreditsCanvasControl.PlayKillSound();
@@ -121,7 +121,7 @@ public class GameStateManagerScript : MonoBehaviour
         isEnded = true;
 
         StartCoroutine(end().GetEnumerator());
-    }
+    }*/
 
     private CheckpointData lastCheckpoint;
     public float creditsDuration;
@@ -155,7 +155,7 @@ public class GameStateManagerScript : MonoBehaviour
         return -1;
     }
 
-    IEnumerable<YieldInstruction> die()
+   /* IEnumerable<YieldInstruction> die()
     {
         PlayerScript.SoundScript.PlayMonsterDeath();
         DisableGameSimulation();
@@ -180,7 +180,7 @@ public class GameStateManagerScript : MonoBehaviour
     {
         if (!SimulationEnabled) return;
         StartCoroutine(die().GetEnumerator());
-    }
+    }*/
 
     private void RestoreCheckpoint()
     {
@@ -200,7 +200,7 @@ public class GameStateManagerScript : MonoBehaviour
         public float playerHealth;
     }
 
-    IEnumerable<YieldInstruction> lose()
+    /*IEnumerable<YieldInstruction> lose()
     {
         if (PreyGotAwayStateScript == null)
             yield break;
@@ -227,5 +227,5 @@ public class GameStateManagerScript : MonoBehaviour
         StartCoroutine(lose().GetEnumerator());
         isLost = true;
         Debug.Log("Lost game, prey got away.");
-    }
+    }*/
 }

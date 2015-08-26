@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Assets.Helpers;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class DetectPlayerScript : MonoBehaviour
@@ -14,10 +15,11 @@ public class DetectPlayerScript : MonoBehaviour
     //public float enterTime;
     private Collider countingCollider = null;
 
+    private DamageCanvasControl damageCanvasControl;
     // Use this for initialization
     void Start()
     {
-
+        damageCanvasControl = this.GetSingleton<DamageCanvasControl>();
     }
 
     public void Awake()
@@ -32,7 +34,7 @@ public class DetectPlayerScript : MonoBehaviour
         if (countingCollider == null) return;
         if (GameState.PlayerScript.IsAlive)
         {
-            GameState.DamageCanvasControl.blinkDamage();
+            damageCanvasControl.blinkDamage();
 
             GameState.Player.GetComponent<PlayerScript>().takeDamage(Time.deltaTime * DamageMultiplier);
         }

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.GameSystems;
 
-public class PreyWalkScript : MonoBehaviour
+public class PreyWalkScript : MonoBehaviour,IPausable
 {
     [SerializeField]
     private Animator EthanAnimator = null;
@@ -26,17 +27,7 @@ public class PreyWalkScript : MonoBehaviour
     {
         //StartCoroutine(WalkPath().GetEnumerator());
 
-        GameStateManagerScript.Get.PauseEvent.AddListener(() => { StopAllCoroutines(); });
-        GameStateManagerScript.Get.UnPauseEvent.AddListener(() =>
-        {
-            {
-                if (EthanAnimator != null)
-                {
-                    EthanAnimator.Play("HumanoidWalk");
-                }
-                StartCoroutine(WalkPath().GetEnumerator());
-            }
-        });
+        
     }
 
     void Update()
@@ -239,5 +230,20 @@ public class PreyWalkScript : MonoBehaviour
             ClothComponent.ClearTransformMotion();
         transform.position = new_position;
         transform.rotation = new_rotation;
+    }
+
+    public void Pause()
+    {
+        StopAllCoroutines();
+                
+    }
+
+    public void Unpause()
+    {
+        if (EthanAnimator != null)
+        {
+            EthanAnimator.Play("HumanoidWalk");
+        }
+        StartCoroutine(WalkPath().GetEnumerator());
     }
 }

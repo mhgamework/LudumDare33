@@ -10,7 +10,7 @@ namespace Assets.Helpers
     {
         public static IEnumerable<T> GetAll<T>()
         {
-            return Component.FindObjectsOfType(typeof (MonoBehaviour)).OfType<T>();
+            return Object.FindObjectsOfType(typeof (MonoBehaviour)).OfType<T>();
         }
     }
 }
