@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.GameStates;
 using UnityEngine.Events;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -9,13 +10,13 @@ public class GameStateManagerScript : MonoBehaviour
 {
     public static GameStateManagerScript Get { get; private set; }
 
-    public StartGameCanvasControl StartGameCanvas;
+    public StartGameStateScript StartGameCanvas;
     public EndGameCanvasControl EndGameCanvas;
-    public CreditsCanvasControl CreditsCanvasControl;
+    public EatPrayStateScript CreditsCanvasControl;
     public CheckpointCanvasControl CheckpointCanvas;
-    public DeathCanvasControl DeathCanvasControl;
+    public BurnedGameStateScript DeathCanvasControl;
     public DamageCanvasControl DamageCanvasControl;
-    public LostCanvasControl LostCanvasControl;
+    public PreyGotAwayStateScript PreyGotAwayStateScript;
     public FirstPersonController Player;
     public PlayerScript PlayerScript { get { return Player.GetComponent<PlayerScript>(); } }
     public bool SimulationEnabled { get; private set; }
@@ -201,7 +202,7 @@ public class GameStateManagerScript : MonoBehaviour
 
     IEnumerable<YieldInstruction> lose()
     {
-        if (LostCanvasControl == null)
+        if (PreyGotAwayStateScript == null)
             yield break;
 
         PlayerScript.SoundScript.PlayMonsterDeath();
@@ -211,13 +212,13 @@ public class GameStateManagerScript : MonoBehaviour
         //EndGameCanvas.gameObject.SetActive(false);
         DamageCanvasControl.ShowDamagePermanent();
 
-        LostCanvasControl.triggerLose();
-        yield return new WaitForSeconds(LostCanvasControl.fadeDuration + LostCanvasControl.stayDuration);
+        PreyGotAwayStateScript.triggerLose();
+        yield return new WaitForSeconds(PreyGotAwayStateScript.fadeDuration + PreyGotAwayStateScript.stayDuration);
         RestoreCheckpoint();
 
         EnableGameSimulation();
 
-        LostCanvasControl.Hide();
+        PreyGotAwayStateScript.Hide();
         DamageCanvasControl.ResetDamagePermanent();
     }
 

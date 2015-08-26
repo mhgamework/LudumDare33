@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7e60ce38317dafb4dbafb4e7bb8319c0
+timeCreated: 1440589554
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - uiFader: {instanceID: 0}
+  - textFader: {instanceID: 0}
+  - playState: {instanceID: 0}
+  - MonsterChewing: {fileID: 8300000, guid: 78bce921c2530a347b2df83397b3a011, type: 3}
+  - KillTensionBuildup: {fileID: 8300000, guid: 9d3174b26fa0a6942bc95fc496782ba7,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
