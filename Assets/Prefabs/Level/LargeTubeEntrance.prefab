@@ -136,6 +136,7 @@ GameObject:
   - 4: {fileID: 442956}
   - 33: {fileID: 3314256}
   - 23: {fileID: 2330538}
+  - 114: {fileID: 11490024}
   m_Layer: 0
   m_Name: LargeTubeEntrance
   m_TagString: Untagged
@@ -1197,13 +1198,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750c48f09a8cf7f44b4bfd5f165de31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11490024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b313311e110af5b4d9145213b7503168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SnapSize: 10
+  Offset: {x: 0, y: 0, z: 5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Offset.z
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136058}
